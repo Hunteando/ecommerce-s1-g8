@@ -9,6 +9,7 @@ class Tag(models.Model):
     
 class Color(models.Model):
     name = models.CharField(max_length=50)
+    hex_value = models.CharField(max_length=50, blank=True, null=True)
     
 class Brand(models.Model):
     name = models.CharField(max_length=50)
