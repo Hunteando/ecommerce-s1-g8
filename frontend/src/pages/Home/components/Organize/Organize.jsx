@@ -4,7 +4,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
-export function Order() {
+export function Organize() {
 	return (
 		<FormControl>
 			<FormLabel id='demo-radio-buttons-group-label'>Ordenar por:</FormLabel>

@@ -1,4 +1,4 @@
-import CustomizedBadges from '../Cart/Card';
+import CustomizedBadges from './Cart/Cart';
 import { Avatar } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import './Header.css';
