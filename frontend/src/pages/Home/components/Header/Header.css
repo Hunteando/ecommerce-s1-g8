@@ -1,0 +1,23 @@
+.header {
+	position: sticky;
+	z-index: 900;
+	top: 0;
+	/* background-color: var(--main-color); */
+	color: var(--second-color);
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+	height: 3.75rem;
+	border-bottom: black solid 1px;
+}
+
+.header h1 {
+	margin: 0.625rem;
+}
+
+/* este select lo toma al icono */
+.header div {
+	margin: 0.625rem;
+	background-color: white;
+	color: var(--second-color);
+}

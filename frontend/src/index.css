@@ -1,0 +1,32 @@
+:root {
+	--main-font: sans-serif;
+	--font-size: 1rem;
+	--main-color: #ffb7b0;
+	--second-color: #2f3640;
+	--main-modal-color: #f5f6fa(247, 222, 30, 0.85);
+	--second-modal-color: #2f3640(34, 34, 34, 0.85);
+	--container-width: 75rem;
+}
+html {
+	box-sizing: border-box;
+	font-family: var(--main-font);
+	font-size: var(--font-size);
+	/* es para darle una transicion al scroll */
+	scroll-behavior: smooth;
+}
+*,
+*:before,
+*:after {
+	/* aca le estamos diciendo que todos los elemetos hereden el box-sizing del html */
+	box-sizing: inherit;
+}
+body {
+	margin: 0;
+	/*  para que todo lo que se desborde en horizontal se oculte y no genere barra de desplazamiento en horizontal */
+	overflow-x: hidden;
+}
+/*  para que las imagenes se adapten a la maxima anchura de su contenedor  */
+img {
+	max-width: 100%;
+	height: auto;
+}
