@@ -1,0 +1,14 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	height: 20rem;
+	background-color: aqua;
+}
+.redes {
+	display: flex;
+	justify-content: space-evenly;
+	background-color: aqua;
+	padding-bottom: 1rem;
+}

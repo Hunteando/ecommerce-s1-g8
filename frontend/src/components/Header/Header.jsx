@@ -2,7 +2,7 @@ import CustomizedBadges from './Cart/Cart';
 import { Avatar } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import './Header.css';
-export default function Header() {
+export function Header() {
 	return (
 		<header className='header'>
 			<button className='panel-btn hamburger hamburger--vortex' type='button'>
