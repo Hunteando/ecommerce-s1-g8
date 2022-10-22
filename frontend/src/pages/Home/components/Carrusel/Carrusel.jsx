@@ -1,5 +1,5 @@
 import Carousel from 'react-material-ui-carousel';
-import { Item } from '../Item/Item';
+import { Item } from './Item/Item';
 
 export function Carrusel(props) {
 	const items = [

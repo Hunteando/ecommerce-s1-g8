@@ -12,7 +12,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 	},
 }));
 
-export default function CustomizedBadges() {
+export default function Cart() {
 	return (
 		<IconButton aria-label='cart' style={{ color: 'var(--second-color)' }}>
 			<StyledBadge badgeContent={1} color='secondary'>
