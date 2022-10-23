@@ -7,3 +7,13 @@
 	border-top: solid 1px;
 	border-bottom: solid 1px;
 }
+.container button {
+	border: none;
+	background: none;
+	display: flex;
+	width: 8rem;
+	height: 3rem;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 1.2rem;
+}

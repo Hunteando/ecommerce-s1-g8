@@ -1,30 +1,33 @@
 import CustomizedBadges from './Cart/Cart';
-import { Avatar } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import './Header.css';
+import style from './Header.module.css';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
 export function Header() {
 	return (
-		<header className='header'>
-			<button className='panel-btn hamburger hamburger--vortex' type='button'>
+		<header className={style.header}>
+			{/* <button
+				className={`panel-btn hamburger hamburger--vortex ${style.amburguese}`}
+				type='button'
+			>
 				<span className='hamburger-box'>
 					<span className='hamburger-inner'></span>
 				</span>
-			</button>
+			</button> */}
 			<h1>makeup</h1>
+			<form>
+				<input type='text' placeholder='buscar Productos' />
+			</form>
+			<SearchIcon className={style.search} />
+			<AccountCircleIcon fontSize='large' className={style.user} />
+
+			<article>
+				<p>Mi cuenta</p>
+				<p>iniciar sesion o registrarme</p>
+			</article>
 			<div>
-				<SearchIcon
-					style={{
-						color: 'var(--second-color)',
-
-						margin: '5px',
-					}}
-					fontSize='large'
-				/>
+				<CustomizedBadges />
 			</div>
-
-			<CustomizedBadges />
-
-			<Avatar />
 		</header>
 	);
 }

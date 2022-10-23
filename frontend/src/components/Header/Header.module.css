@@ -1,0 +1,82 @@
+.header {
+	position: sticky;
+	z-index: 900;
+	top: 0;
+	/* background-color: var(--main-color); */
+	color: var(--second-color);
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+	height: 3.75rem;
+	border-bottom: black solid 1px;
+	background-color: white;
+}
+
+.header h1 {
+	margin: 0.625rem;
+}
+
+/* este select lo toma al icono */
+.header div {
+	margin: 0.625rem;
+	background-color: white;
+	color: var(--second-color);
+}
+.header form {
+	margin-top: 15px;
+	display: none;
+}
+.header article {
+	display: none;
+}
+.search {
+	margin-top: 1rem;
+}
+.user {
+	margin-top: 0.7rem;
+	margin-left: 1rem;
+}
+.header div:last-child {
+	margin-right: 20px;
+}
+
+@media screen and (min-width: 768px) {
+	.header h1 {
+		margin: 0.625rem;
+		margin-left: 15rem;
+	}
+	.header form {
+		margin-top: 15px;
+		display: inline;
+		margin-left: 4rem;
+	}
+	.search {
+		display: none !important;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.header h1 {
+		margin: 0.625rem;
+		margin-left: 1rem;
+	}
+	.amburguese {
+		display: none;
+	}
+	.user {
+		margin-top: 0.7rem;
+		display: none !important;
+	}
+	.header article {
+		display: flex;
+		flex-direction: column;
+		height: 3.75rem;
+		justify-content: flex-start;
+		align-content: flex-start;
+		align-items: center;
+		margin-top: 0.3rem;
+	}
+	.header article p {
+		margin-top: 0.1px;
+	}
+}

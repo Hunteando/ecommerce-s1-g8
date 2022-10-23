@@ -1,7 +1,7 @@
 import Carousel from 'react-material-ui-carousel';
 import { Item } from './Item/Item';
-
-export function Carrusel(props) {
+import Style from './Carrusel.module.css';
+export function Carrusel() {
 	const items = [
 		{
 			image:
@@ -15,10 +15,12 @@ export function Carrusel(props) {
 		},
 	];
 	return (
-		<Carousel height={150}>
-			{items.map((e, i) => (
-				<Item key={i} image={e.image} />
-			))}
-		</Carousel>
+		<section>
+			<Carousel height={200} className={Style.container}>
+				{items.map((e, i) => (
+					<Item key={i} image={e.image} />
+				))}
+			</Carousel>
+		</section>
 	);
 }

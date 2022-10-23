@@ -30,3 +30,9 @@ img {
 	max-width: 100%;
 	height: auto;
 }
+.is-active-order {
+	transform: translate(0, 0);
+}
+.is-active-filter {
+	transform: translate(0, 0);
+}
