@@ -1,26 +1,45 @@
-import Carousel from 'react-material-ui-carousel';
-import { Item } from './Item/Item';
-import Style from './Carrusel.module.css';
+import { useState } from 'react';
+
 export function Carrusel() {
-	const items = [
-		{
-			image:
-				'https://centralmakeup.mx/wp-content/uploads/2020/04/maquillaje-de-noche.jpg',
-			name: 'title1',
-		},
-		{
-			image:
-				'https://i.pinimg.com/550x/81/b5/0c/81b50c23e88a41449ed8acc6153caf02.jpg',
-			name: 'title2',
-		},
-	];
+	const items = ['1.jpg', '2.jpg', '3.jpg', '4.jpg'];
+
+	const [selectedIndex, setSelectedIndex] = useState(0);
+	const [selectedImage, setSelectedImage] = useState(items[0]);
+
+	const selectnewImage = (index, image, next = true) => {
+		const condicion = next ? selectedIndex - 1 : items.length - 1;
+		const nextIndex = next
+			? condicion
+				? selectedIndex + 1
+				: 0
+			: condicion
+			? selectedIndex - 1
+			: items.length - 1;
+		setSelectedImage(items[nextIndex]);
+		setSelectedIndex(nextIndex);
+	};
+
+	const previous = () => {
+		// const condicion = selectedIndex > 0;
+		// const nextIndex = condicion ? selectedIndex - 1 : items.length - 1;
+		// setSelectedImage(items[nextIndex]);
+		// setSelectedIndex(nextIndex);
+		selectnewImage(selectedImage, items, false);
+	};
+	const next = () => {
+		// const condicion = selectedIndex < items.length;
+		// const nextIndex = condicion ? selectedIndex + 1 : 0;
+		// setSelectedImage(items[nextIndex]);
+		// setSelectedIndex(nextIndex);
+		selectnewImage(selectedImage, items, true);
+	};
+
 	return (
 		<section>
-			<Carousel height={200} className={Style.container}>
-				{items.map((e, i) => (
-					<Item key={i} image={e.image} />
-				))}
-			</Carousel>
+			<img
+				src={require(`.assets/img/${selectedImage}`).default}
+				alt='maquillaje'
+			/>
 		</section>
 	);
 }
