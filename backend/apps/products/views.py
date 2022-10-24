@@ -1,6 +1,9 @@
+
+# Django Rest Framework
 from rest_framework import viewsets
-from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated, AllowAny
+
+# Models, Serializers
 from .models import Product
 from .serializers import ProductSerializer
 
