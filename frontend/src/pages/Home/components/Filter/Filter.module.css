@@ -1,0 +1,17 @@
+.container_filter {
+	position: fixed;
+	top: 0;
+	z-index: 900;
+	width: 100%;
+	transform: translate(-100%, 0);
+	transition: transform 0.3s ease;
+}
+@media screen and (min-width: 1200px) {
+	.container_filter {
+		position: static;
+		transform: translate(0, 0);
+		width: 30vw;
+		border: 2px solid;
+		margin: 1rem 0 0 1rem;
+	}
+}

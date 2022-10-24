@@ -1,0 +1,88 @@
+.header {
+	position: sticky;
+	z-index: 900;
+	top: 0;
+	/* background-color: var(--main-color); */
+	color: var(--second-color);
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+	height: 3.75rem;
+	border-bottom: black solid 1px;
+	background-color: white;
+	width: 100vw;
+}
+
+.header h1 {
+	margin: 0.625rem;
+}
+
+/* este select lo toma al icono */
+.header div {
+	margin: 0.625rem;
+	background-color: white;
+	color: var(--second-color);
+	width: 7rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-right: 1rem;
+	padding-right: 5px;
+}
+
+.header form {
+	display: none;
+}
+.header article {
+	display: none;
+}
+
+@media screen and (min-width: 768px) {
+	.header h1 {
+		margin: 0.625rem auto;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.header h1 {
+		margin: 0.625rem 1rem;
+	}
+	.header form {
+		display: block;
+		width: 50vw;
+	}
+	.header input {
+		width: 100%;
+		height: 80%;
+		align-content: center;
+		margin: 5px 0;
+	}
+	.search {
+		display: none !important;
+	}
+	.header div {
+		width: 30vw;
+		height: 100%;
+		margin-top: 0;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+	.header article {
+		display: flex;
+		flex-direction: column;
+	}
+	.header article:hover {
+		background-color: gray;
+		transition: 1s;
+		color: white;
+	}
+
+	.header article p {
+		margin: 0;
+		text-align: center;
+	}
+	.header article p:first-child {
+		font-weight: bold;
+		margin-bottom: 5px;
+	}
+}

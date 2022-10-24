@@ -1,0 +1,22 @@
+.container_order {
+	background-color: white;
+	position: fixed;
+	bottom: 0;
+	z-index: 900;
+	width: 100%;
+	height: 40%;
+	transform: translate(0, 100%);
+	transition: transform 0.3s ease;
+	border-top: solid 5px black;
+	padding: 0.5rem 1rem;
+}
+
+@media screen and (min-width: 1200px) {
+	.container_order {
+		position: static;
+		transform: translate(0, 0);
+		width: 30vw;
+		border: 2px solid;
+		margin: 1rem 0 0 1rem;
+	}
+}
