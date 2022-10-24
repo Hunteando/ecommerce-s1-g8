@@ -3,7 +3,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import style from './Header.module.css';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-export function Header() {
+// eslint-disable-next-line react/prop-types
+export function Header({ showSearch, search }) {
+	console.log(showSearch);
+	console.log(search);
 	return (
 		<header className={style.header}>
 			{/* <button
@@ -18,14 +21,13 @@ export function Header() {
 			<form>
 				<input type='text' placeholder='buscar Productos' />
 			</form>
-			<SearchIcon className={style.search} />
-			<AccountCircleIcon fontSize='large' className={style.user} />
-
-			<article>
-				<p>Mi cuenta</p>
-				<p>iniciar sesion o registrarme</p>
-			</article>
 			<div>
+				<SearchIcon onClick={showSearch} className={style.search} />
+				<AccountCircleIcon fontSize='large' />
+				<article>
+					<p>Mi cuenta</p>
+					<p>iniciar sesion o registrarme</p>
+				</article>
 				<CustomizedBadges />
 			</div>
 		</header>

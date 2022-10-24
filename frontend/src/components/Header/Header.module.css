@@ -10,6 +10,7 @@
 	height: 3.75rem;
 	border-bottom: black solid 1px;
 	background-color: white;
+	width: 100vw;
 }
 
 .header h1 {
@@ -21,62 +22,67 @@
 	margin: 0.625rem;
 	background-color: white;
 	color: var(--second-color);
+	width: 7rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-right: 1rem;
+	padding-right: 5px;
 }
+
 .header form {
-	margin-top: 15px;
 	display: none;
 }
 .header article {
 	display: none;
 }
-.search {
-	margin-top: 1rem;
-}
-.user {
-	margin-top: 0.7rem;
-	margin-left: 1rem;
-}
-.header div:last-child {
-	margin-right: 20px;
-}
 
 @media screen and (min-width: 768px) {
 	.header h1 {
-		margin: 0.625rem;
-		margin-left: 15rem;
-	}
-	.header form {
-		margin-top: 15px;
-		display: inline;
-		margin-left: 4rem;
-	}
-	.search {
-		display: none !important;
+		margin: 0.625rem auto;
 	}
 }
 
 @media screen and (min-width: 1200px) {
 	.header h1 {
-		margin: 0.625rem;
-		margin-left: 1rem;
+		margin: 0.625rem 1rem;
 	}
-	.amburguese {
-		display: none;
+	.header form {
+		display: block;
+		width: 50vw;
 	}
-	.user {
-		margin-top: 0.7rem;
+	.header input {
+		width: 100%;
+		height: 80%;
+		align-content: center;
+		margin: 5px 0;
+	}
+	.search {
 		display: none !important;
+	}
+	.header div {
+		width: 30vw;
+		height: 100%;
+		margin-top: 0;
+		padding-left: 1rem;
+		padding-right: 1rem;
 	}
 	.header article {
 		display: flex;
 		flex-direction: column;
-		height: 3.75rem;
-		justify-content: flex-start;
-		align-content: flex-start;
-		align-items: center;
-		margin-top: 0.3rem;
 	}
+	.header article:hover {
+		background-color: gray;
+		transition: 1s;
+		color: white;
+	}
+
 	.header article p {
-		margin-top: 0.1px;
+		margin: 0;
+		text-align: center;
+	}
+	.header article p:first-child {
+		font-weight: bold;
+		margin-bottom: 5px;
 	}
 }
