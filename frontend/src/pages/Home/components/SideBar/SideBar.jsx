@@ -9,7 +9,6 @@ export function SideBar() {
 		organize.classList.toggle('is-active-order');
 	};
 	const showFilter = () => {
-		console.log('chau');
 		const filter = document.querySelector('.filter');
 		filter.classList.toggle('is-active-filter');
 	};

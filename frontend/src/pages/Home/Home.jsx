@@ -20,6 +20,7 @@ export function Home() {
 	// 	pepe();
 	// }, []);
 	// console.log('aca', product);
+
 	const images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg'];
 	const [search, setSearch] = useState(false);
 	const showSearch = () => {

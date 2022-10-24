@@ -5,8 +5,6 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 // eslint-disable-next-line react/prop-types
 export function Header({ showSearch, search }) {
-	console.log(showSearch);
-	console.log(search);
 	return (
 		<header className={style.header}>
 			{/* <button
