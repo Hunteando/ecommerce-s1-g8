@@ -4,11 +4,11 @@
 	justify-content: space-around;
 	align-items: center;
 	height: 20rem;
-	background-color: aqua;
+	background-color: #faefc2;
 }
 .redes {
 	display: flex;
 	justify-content: space-evenly;
-	background-color: aqua;
+	background-color: #faefc2;
 	padding-bottom: 1rem;
 }

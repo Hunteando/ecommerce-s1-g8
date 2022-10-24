@@ -1,45 +1,91 @@
-import { useState } from 'react';
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
-export function Carrusel() {
-	const items = ['1.jpg', '2.jpg', '3.jpg', '4.jpg'];
+const CarruselImg = styled.img`
+	width: 500%;
+	height: 30vh;
+	opacity: 0;
+	transition: 1s;
+	&.loaded {
+		opacity: 1;
+	}
+`;
+const CarruselButtonPrev = styled.button`
+	background-color: green;
+`;
+const CarruselButtonNext = styled.button`
+	background-color: red;
+`;
 
+export function Carrusel(props) {
 	const [selectedIndex, setSelectedIndex] = useState(0);
-	const [selectedImage, setSelectedImage] = useState(items[0]);
+	const [selectedImage, setSelectedImage] = useState(props.images[0]);
+	const [loaded, setLoaded] = useState(false);
+	useEffect(() => {
+		if (props.autoplay || !props.showbuttons) {
+			const interval = setInterval(() => {
+				selectnewImage(selectedIndex, props.images);
+			}, 2000);
+			return () => {
+				clearInterval(interval);
+			};
+		}
+	});
 
 	const selectnewImage = (index, image, next = true) => {
-		const condicion = next ? selectedIndex - 1 : items.length - 1;
-		const nextIndex = next
-			? condicion
-				? selectedIndex + 1
-				: 0
-			: condicion
-			? selectedIndex - 1
-			: items.length - 1;
-		setSelectedImage(items[nextIndex]);
-		setSelectedIndex(nextIndex);
+		setLoaded(false);
+		setTimeout(() => {
+			const condicion = next
+				? selectedIndex < props.images.length - 1
+				: selectedIndex > 0;
+			const nextIndex = next
+				? condicion
+					? selectedIndex + 1
+					: 0
+				: condicion
+				? selectedIndex - 1
+				: props.images.length - 1;
+			setSelectedImage(props.images[nextIndex]);
+			setSelectedIndex(nextIndex);
+		}, 500);
 	};
 
 	const previous = () => {
 		// const condicion = selectedIndex > 0;
-		// const nextIndex = condicion ? selectedIndex - 1 : items.length - 1;
-		// setSelectedImage(items[nextIndex]);
+		// const nextIndex = condicion ? selectedIndex - 1 : images.length - 1;
+		// setSelectedImage(images[nextIndex]);
 		// setSelectedIndex(nextIndex);
-		selectnewImage(selectedImage, items, false);
+		selectnewImage(selectedImage, props.images, false);
 	};
 	const next = () => {
-		// const condicion = selectedIndex < items.length;
+		// const condicion = selectedIndex < images.length;
 		// const nextIndex = condicion ? selectedIndex + 1 : 0;
-		// setSelectedImage(items[nextIndex]);
+		// setSelectedImage(images[nextIndex]);
 		// setSelectedIndex(nextIndex);
-		selectnewImage(selectedImage, items, true);
+		selectnewImage(selectedImage, props.images, true);
 	};
 
 	return (
 		<section>
-			<img
-				src={require(`.assets/img/${selectedImage}`).default}
+			<CarruselImg
+				src={`../../../src/assets/img/${selectedImage}`}
 				alt='maquillaje'
+				className={loaded ? 'loaded' : ''}
+				onLoad={() => {
+					setLoaded(true);
+				}}
 			/>
+			{props.showbuttons ? (
+				<>
+					<CarruselButtonPrev onClick={previous}>{'<'}</CarruselButtonPrev>
+					<CarruselButtonNext button onClick={next}>
+						{'>'}
+					</CarruselButtonNext>
+				</>
+			) : (
+				<></>
+			)}
 		</section>
 	);
 }
