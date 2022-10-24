@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.products',
     'apps.cars',
     'apps.categories',
+    'apps.authentication',
     # Django external apps
     'rest_framework',
     'rest_framework.authtoken',
@@ -123,6 +124,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Custom user model
+AUTH_USER_MODEL = "authentication.User"
 
 
 # Internationalization
