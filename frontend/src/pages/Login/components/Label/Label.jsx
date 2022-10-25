@@ -3,7 +3,7 @@
 const Label = (props) => {
     return (
         <div>
-            <label>Ingrese {props.texto}</label>
+            <label>{props.texto}</label>
         </div>
 
     );

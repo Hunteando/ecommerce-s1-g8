@@ -1,0 +1,13 @@
+.container{
+    width: 20rem;
+    height: 30rem;
+    border-color: black;
+    border-radius: 2rem;
+    border-width: 2rem;
+    border-style: double;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    justify-content: center;
+    
+}
