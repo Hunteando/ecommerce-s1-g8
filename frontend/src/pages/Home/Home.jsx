@@ -7,7 +7,7 @@ import { Footer } from '@/components/Footer/Footer';
 import { Search } from '../../components/search/Search';
 import { useState } from 'react';
 import { Cards } from './components/Cards/Cards';
-
+import style from './Home.module.css';
 export function Home() {
 	const images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg'];
 
@@ -25,9 +25,11 @@ export function Home() {
 					<Header showSearch={showSearch} search={search} />
 					<Carrusel images={images} autoplay={false} showbuttons={false} />
 					<SideBar />
-					<Filter />
-					<Organize />
-					<Cards />
+					<div className={style.container_desk}>
+						<Organize />
+						<Cards />
+						<Filter />
+					</div>
 					<Footer />
 				</>
 			)}
