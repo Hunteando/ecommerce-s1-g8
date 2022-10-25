@@ -1,7 +1,6 @@
-from tkinter import CASCADE
-from django.db import models 
-from django.contrib.auth.models import User
+from django.db import models
 from apps.products.models import Product
+from apps.authentication.models import User
 
 # Create your models here.
 class Car(models.Model):

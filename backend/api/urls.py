@@ -16,14 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.urls import re_path as url
-from rest_framework.authtoken.views import obtain_auth_token
+from rest_framework import routers
 from .views import bienvenido
 
+
+# Api router
+router = routers.DefaultRouter()
+
 urlpatterns = [
-    url(r'auth/', obtain_auth_token),
+    # Admin routes
     path('admin/', admin.site.urls),
+    # Api routes
     path('api/', include('apps.cars.urls')),
     path('api/', include('apps.categories.urls')),
     path('api/', include('apps.products.urls')),
+    path('api/', include('apps.authentication.urls')),
+    path('api/', include(router.urls)),
     url(r'^.*$', bienvenido),
 ]
