@@ -2,9 +2,10 @@ import CustomizedBadges from './Cart/Cart';
 import SearchIcon from '@mui/icons-material/Search';
 import style from './Header.module.css';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Link } from '@mui/material';
 
 // eslint-disable-next-line react/prop-types
-export function Header({ showSearch, search }) {
+export function Header({ showSearch }) {
 	return (
 		<header className={style.header}>
 			{/* <button
@@ -15,7 +16,9 @@ export function Header({ showSearch, search }) {
 					<span className='hamburger-inner'></span>
 				</span>
 			</button> */}
-			<h1>makeup</h1>
+			<Link to={'/'}>
+				<h1>makeup</h1>
+			</Link>
 			<form>
 				<input type='text' placeholder='buscar Productos' />
 			</form>
