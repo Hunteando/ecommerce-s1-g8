@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { Cards } from './components/Cards/Cards';
 import style from './Home.module.css';
 export function Home() {
-	const images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg'];
+	const images = ['1.jpg', '2.jpg', '3.jpg'];
 
 	const [search, setSearch] = useState(false);
 	const showSearch = () => {
