@@ -22,7 +22,7 @@ export function Cards() {
 							name={e.name}
 							image={e.api_featured_image}
 							price={e.price}
-							rand={e.rand}
+							brand={e.brand}
 						/>
 					</div>
 				))}

@@ -2,7 +2,7 @@ import CustomizedBadges from './Cart/Cart';
 import SearchIcon from '@mui/icons-material/Search';
 import style from './Header.module.css';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { Link } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
 export function Header({ showSearch }) {
