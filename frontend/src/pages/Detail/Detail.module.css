@@ -44,3 +44,30 @@
 	border: black solid 1px;
 	border-radius: 5px;
 }
+
+@media screen and (min-width: 1200px) {
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+	.container_detail {
+		max-width: 1200px;
+		margin: 3rem auto;
+		display: flex;
+		justify-content: space-between;
+	}
+	.container_detail img {
+		width: 525px;
+		height: 525px;
+	}
+	.container_detail article {
+		width: 35rem;
+		height: 400px;
+		margin: 0 auto;
+		padding-top: 3rem;
+		border: solid 1px gray;
+	}
+	.container section:nth-child(2) {
+		padding: 0 2rem 1rem 2rem;
+	}
+}

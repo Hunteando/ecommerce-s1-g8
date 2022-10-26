@@ -8,21 +8,25 @@ export function Detail({ image, brand, name, price, description, colors }) {
 	return (
 		<>
 			<Header />
-			<section className={style.container_detail}>
-				<img src={`${image}`} />
-				<article>
-					<p> {`${brand}`}</p>
-					<h4>{name}</h4>
-					<p>${`${price === '0.0' ? '55.00' : price}`}</p>
-					<Color colors={colors} />
-					<div>
-						<Counter />
-						<button>comprar</button>
-					</div>
+			<div className={style.container}>
+				<section className={style.container_detail}>
+					<img src={`${image}`} alt='producto' />
+					<article>
+						<h3> {`${brand}`}</h3>
+						<h4>{name}</h4>
+						<p>${`${price === '0.0' ? '55.00' : price}`}</p>
+						<Color colors={colors} />
+						<div>
+							<Counter />
+							<button>comprar</button>
+						</div>
+					</article>
+				</section>
+				<section>
 					<h4>Description: </h4>
-				</article>
-				<p>{description}</p>
-			</section>
+					<p>{description}</p>
+				</section>
+			</div>
 			<Footer />
 		</>
 	);
