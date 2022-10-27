@@ -28,8 +28,8 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = [
-    'https://api.grupo8hunt.tk',
-    'http://api.grupo8hunt.tk',
+    'https://api.grupo8hunt.tk/',
+    'http://api.grupo8hunt.tk/',
     'api.grupo8hunt.tk',
     'https://127.0.0.1',
     '127.0.0.1'
@@ -91,8 +91,9 @@ WSGI_APPLICATION = 'api.wsgi.application'
 CORS_ORIGIN_WHITELIST = (
     'https://localhost:3000',
     'http://localhost:3000',
-    'https://grupo8hunt.tk',
-    'http://grupo8hunt.tk',
+    'https://grupo8hunt.tk/',
+    'http://grupo8hunt.tk/',
+    'grupo8hunt.tk',
     
 )
 CORS_ALLOW_CREDENTIALS = True
@@ -103,7 +104,7 @@ CORS_ALLOW_CREDENTIALS = True
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "carssu_grupo8hunt",
+        "NAME": "carlossu_grupo8hunt",
         "USER": "carlossu_g8hunt",
         "PASSWORD": "administradorroot123",
         "HOST": "localhost",
@@ -156,12 +157,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/staticg8/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_files') 
-STATIC_ROOT= '/home/carlossu/public_html/static'
+STATIC_ROOT= '/home/carlossu/public_html/staticg8'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT= '/home/carlossu/public_html/media'
+MEDIA_URL = '/mediag8/'
+MEDIA_ROOT= '/home/carlossu/public_html/mediag8'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
