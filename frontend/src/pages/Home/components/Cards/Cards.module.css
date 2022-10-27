@@ -2,11 +2,11 @@
 	margin: 10px 0 10px 0;
 	display: grid;
 	grid-template-columns: 45% 45%;
-	justify-content: space-around;
+	justify-content: space-between;
 	justify-items: center;
 }
 .item_card {
-	width: 90%;
+	width: 105%;
 	text-align: center;
 	border: solid gray 2px;
 	border-radius: 0.5rem;
