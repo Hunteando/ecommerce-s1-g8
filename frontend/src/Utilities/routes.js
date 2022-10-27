@@ -1,7 +1,7 @@
 export const PublicRoutes = {
-	LOGING: 'login',
+	LOGIN: 'login',
 };
 
 export const PrivateRoutes = {
-	Dashboard: 'Dashboard',
+	DASHBOARD: 'Dashboard',
 };
