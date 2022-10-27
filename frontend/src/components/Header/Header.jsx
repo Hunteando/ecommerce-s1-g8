@@ -24,7 +24,9 @@ export function Header({ showSearch }) {
 			</form>
 			<div>
 				<SearchIcon onClick={showSearch} className={style.search} />
-				<AccountCircleIcon fontSize='large' />
+				<Link to={'/login'}>
+					<AccountCircleIcon fontSize='large' />
+				</Link>
 				<article>
 					<p>Mi cuenta</p>
 					<p>iniciar sesion o registrarme</p>

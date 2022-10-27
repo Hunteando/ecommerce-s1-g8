@@ -9,10 +9,11 @@ function App() {
 		<div>
 			<Routes>
 				<Route path='/' element={<Home />} />
-				<Route path='/detail' element={<Detail />} />
+				<Route path='/detail/:id' element={<Detail />} />
 				<Route path='/login' element={<Login />} />
 				<Route path='/formreg' element={<Formreg />} />
 				<Route path='/detail' element={<Detail />} />
+				<Route path='*' element={<>NOT FOUND</>} />
 			</Routes>
 		</div>
 	);

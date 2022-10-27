@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 
-export function CardMakeup({ name, image, price, brand }) {
+export function CardMakeup({ name, image, price, brand, id }) {
 	return (
 		<>
-			<Link to='/detail'>
+			<Link to={`/detail/${id}`}>
 				<img src={`${image}`} />
 				<h4>{name}</h4>
 			</Link>
