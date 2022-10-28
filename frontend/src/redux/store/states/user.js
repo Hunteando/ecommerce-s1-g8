@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const empatyUserState = {
-	id: 0,
 	name: '',
 	email: '',
+	jwt: '',
 };
 
 export const userSlice = createSlice({
