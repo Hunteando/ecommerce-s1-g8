@@ -116,7 +116,9 @@ DATABASES = {
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': {
         'rest_framework.permissions.IsAuthenticated',
-    }
+    },
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
 }
 
 
@@ -157,12 +159,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = '/staticg8/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_files') 
-STATIC_ROOT= '/home/carlossu/public_html/staticg8'
+STATIC_URL = 'staticg8/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticg8')
+STATIC_ROOT= 'staticg8/'
 
-MEDIA_URL = '/mediag8/'
-MEDIA_ROOT= '/home/carlossu/public_html/mediag8'
+MEDIA_URL = 'mediag8/'
+MEDIA_ROOT= 'mediag8/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
