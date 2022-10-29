@@ -11,10 +11,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -27,6 +28,9 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = [
+    'https://api.grupo8hunt.tk/',
+    'http://api.grupo8hunt.tk/',
+    'api.grupo8hunt.tk',
     'https://127.0.0.1',
     '127.0.0.1'
 ]
@@ -87,6 +91,10 @@ WSGI_APPLICATION = 'api.wsgi.application'
 CORS_ORIGIN_WHITELIST = (
     'https://localhost:3000',
     'http://localhost:3000',
+    'https://grupo8hunt.tk/',
+    'http://grupo8hunt.tk/',
+    'grupo8hunt.tk',
+    
 )
 CORS_ALLOW_CREDENTIALS = True
 
@@ -95,15 +103,22 @@ CORS_ALLOW_CREDENTIALS = True
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "carlossu_grupo8hunt",
+        "USER": "carlossu_g8hunt",
+        "PASSWORD": "administradorroot123",
+        "HOST": "localhost",
+        "PORT": "",
+        "OPTIONS": {"init_command": "SET sql_mode='STRICT_TRANS_TABLES'"},
     }
 }
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': {
         'rest_framework.permissions.IsAuthenticated',
-    }
+    },
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
 }
 
 
@@ -144,7 +159,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'staticg8/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticg8')
+STATIC_ROOT= 'staticg8/'
+
+MEDIA_URL = 'mediag8/'
+MEDIA_ROOT= 'mediag8/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

@@ -15,11 +15,8 @@ export function Footer() {
 			</section>
 			<article className={Style.redes}>
 				<FacebookOutlinedIcon />
-
 				<InstagramIcon />
-
 				<YouTubeIcon />
-
 				<TwitterIcon />
 			</article>
 		</>

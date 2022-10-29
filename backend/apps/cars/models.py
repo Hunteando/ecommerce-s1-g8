@@ -5,12 +5,12 @@ from apps.authentication.models import User
 # Create your models here.
 class Car(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ManyToManyField(Product)
+    product = models.ForeignKey(Product, blank=True, null=True, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ManyToManyField(Product)
+    product = models.ForeignKey(Product, blank=True, null=True, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     
 class Stock(models.Model):
