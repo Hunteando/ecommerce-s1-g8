@@ -1,3 +1,8 @@
+// Hook personalizado para manejo de validaciones de formularios
+
+
+
+
 import { useState } from "react";
 
 export const validacionForm = (initForm, validarForm) => {

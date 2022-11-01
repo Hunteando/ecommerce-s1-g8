@@ -1,8 +1,9 @@
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from "../../components/Header/Header"
-
-// import { useState } from "react";
 import { validacionForm } from "./validacion";
+
+
+// Inicializando formulario
 
 const initForm = {
     nombre: "",
@@ -16,21 +17,29 @@ const initForm = {
     cPassword: ""
 
 }
+
+
+
+// Funcion que establece los parámetros y logica de validacion de campos
+
 const validacion = (form) => {
     const error = {};
     const regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
     const regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
     const regexNomAp = /^.{2,30}$/;
+    const regexTel = /^54[0-9]{10}$/;
+    const regexDni = /^[0-9]{8}$/;
 
+    // Nombre
     if (!form.nombre.trim()) {
         error.nombre = "Campo requerido";
     } else if (!regexName.test(form.nombre.trim())) {
-        error.nombre = "No se aceptan simbolos, solo letras"
+        error.nombre = "No se aceptan simbolos ni numeros"
     } else if (!regexNomAp.test(form.nombre.trim())) {
         error.nombre = "Debe contener menos de 30 caracteres"
     }
 
-
+    // Apellido
     if (!form.apellido.trim()) {
         error.apellido = "Campo requerido";
     } else if (!regexName.test(form.apellido.trim())) {
@@ -39,50 +48,56 @@ const validacion = (form) => {
         error.apellido = "Debe contener menos de 30 caracteres"
     }
 
-
+    // DNI
     if (!form.dni.trim()) {
         error.dni = "Campo requerido";
+    } else if (!regexDni.test(form.dni.trim())) {
+        error.dni = "Debe contener solo numeros y 8 caracteres "
     }
 
+
+    // Fecha de nacimiento
     if (!form.fechaNac.trim()) {
         error.fechaNac = "Campo requerido";
     }
 
+    // Teléfono
     if (!form.telefono.trim()) {
         error.telefono = "Campo requerido";
+    } else if (!regexTel.test(form.telefono.trim())) {
+        error.telefono = "Telefono invalido. Formato correcto: 54xxxxxxxxxx"
     }
 
+    // Email
     if (!form.email.trim()) {
         error.email = "Campo requerido";
     } else if (!regexEmail.test(form.email.trim())) {
         error.email = "email invalido"
     }
 
+    // Direccion
     if (!form.direccion.trim()) {
         error.direccion = "Campo requerido";
     }
 
+    // Contraseña
     if (!form.password.trim()) {
         error.password = "Campo requerido";
     }
 
+    // Confirmar contraseña
+
     if (!form.cPassword.trim()) {
         error.cPassword = "Campo requerido";
+    } else if (form.cPassword !== form.password) {
+        error.cPassword = "Las contraseñas no coinciden"
     }
 
     return error;
 }
 
 const formReg = () => {
-    // const [nombre, setNombre] = useState('');
-    // const [apellido, setApellido] = useState('');
-    // const [dni, setDni] = useState('');
-    // const [fechaNac, setFechaNac] = useState('');
-    // const [telefono, setTelefono] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [direccion, setDireccion] = useState('');
-    // const [password, setPassword] = useState('');
-    // const [cPassword, setCPassword] = useState('');
+
 
     const { form, error, handleChange, handleBlur, handleSubmit } = validacionForm(initForm, validacion);
 
