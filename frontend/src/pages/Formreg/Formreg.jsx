@@ -20,7 +20,7 @@ const initForm = {
 
 const styles = {
     fontWeight: "bold",
-    color: "#dc3545"
+    color: "red"
 }
 
 // Funcion que establece los parámetros y logica de validacion de campos
@@ -130,6 +130,7 @@ const formReg = () => {
             <form onSubmit={handleSubmit} className={style.form}>
                 <h4 className={style.h4}>Nombre</h4>
                 <input
+                    className={style.input}
                     id="nombre"
                     name="nombre"
                     type="text"
@@ -143,6 +144,7 @@ const formReg = () => {
 
                 <h4 className={style.h4}>Apellido</h4>
                 <input
+                    className={style.input}
                     id="apellido"
                     name="apellido"
                     type="text"
@@ -156,6 +158,7 @@ const formReg = () => {
 
                 <h4 className={style.h4}>DNI</h4>
                 <input
+                    className={style.input}
                     id="dni"
                     name="dni"
                     type="text"
@@ -169,6 +172,7 @@ const formReg = () => {
 
                 <h4 className={style.h4}>Fecha de nacimiento</h4>
                 <input
+                    className={style.input}
                     id="fechaNac"
                     name="fechaNac"
                     type="date"
@@ -180,8 +184,9 @@ const formReg = () => {
                 />
                 {error.fechaNac && <p style={styles}>{error.fechaNac}</p>}
 
-                <h4 className={style.h4}>Telefono</h4>
+                <h4 className={style.h4}>Teléfono</h4>
                 <input
+                    className={style.input}
                     id="telefono"
                     name="telefono"
                     type="text"
@@ -195,6 +200,7 @@ const formReg = () => {
 
                 <h4 className={style.h4}>Email</h4>
                 <input
+                    className={style.input}
                     id="email"
                     name="email"
                     type="text"
@@ -205,8 +211,9 @@ const formReg = () => {
                     required
                 />
                 {error.email && <p style={styles}>{error.email}</p>}
-                <h4 className={style.h4}>Direccion</h4>
+                <h4 className={style.h4}>Dirección</h4>
                 <input
+                    className={style.input}
                     id="direccion"
                     name="direccion"
                     type="text"
@@ -220,6 +227,7 @@ const formReg = () => {
 
                 <h4 className={style.h4}>Contraseña</h4>
                 <input
+                    className={style.input}
                     id="password"
                     name="password"
                     type="password"
@@ -233,6 +241,7 @@ const formReg = () => {
 
                 <h4 className={style.h4}>Confirmar contraseña</h4>
                 <input
+                    className={style.input}
                     id="cPassword"
                     name="cPassword"
                     type="text"
@@ -243,7 +252,9 @@ const formReg = () => {
                     required
                 />
                 {error.cPassword && <p style={styles}>{error.cPassword}</p>}
-                <input type="submit" value="enviar" />
+
+
+                <input className={style.submit} type="submit" value="Enviar" />
             </form>
 
             <Footer />
