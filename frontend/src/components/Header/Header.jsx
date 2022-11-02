@@ -3,9 +3,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import style from './Header.module.css';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Link } from 'react-router-dom';
-import { openModal } from '../../Utilities/openModal';
+import { openModal } from '@/Utilities/openModal';
 
-// eslint-disable-next-line react/prop-types
 export function Header({ showSearch }) {
 	function handleOpenModal() {
 		openModal();
@@ -23,7 +22,6 @@ export function Header({ showSearch }) {
 				<div onClick={handleOpenModal}>
 					<AccountCircleIcon fontSize='large' />
 				</div>
-
 				<article>
 					<p>Mi cuenta</p>
 					<p>iniciar sesion o registrarme</p>
