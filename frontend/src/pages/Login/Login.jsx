@@ -1,5 +1,4 @@
 import Title from './components/Title/Title';
-import Label from './components/Label/Label';
 import Style from './Login.module.css';
 import { Footer } from '../../components/Footer/Footer';
 import { Header } from '../../components/Header/Header';
@@ -76,7 +75,7 @@ const Login = () => {
 				<input className={Style.submit} type='submit' value='Enviar' />
 
 				<div>
-					<Label texto='Recuperar contraseña' />
+					<label htmlFor="">¿Olvido su contraseña?</label>
 				</div>
 			</form>
 			<Footer />

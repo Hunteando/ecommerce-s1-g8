@@ -30,8 +30,8 @@ const validacion = (form) => {
     const regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
     const regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
     const regexNomAp = /^.{2,30}$/;
-    const regexTel = /^54[0-9]{10}$/;
-    const regexDni = /^[0-9]{8}$/;
+    // const regexTel = /^54[0-9]{10}$/;
+    // const regexDni = /^[0-9]{8}$/;
 
 
     // Nombre
@@ -52,40 +52,40 @@ const validacion = (form) => {
         error.apellido = "Debe contener menos de 30 caracteres"
     }
 
-    // DNI
-    if (!form.dni.trim()) {
-        error.dni = "Campo requerido";
-    } else if (!regexDni.test(form.dni.trim())) {
-        error.dni = "Debe contener solo numeros y 8 caracteres "
-    }
+    // // DNI
+    // if (!form.dni.trim()) {
+    //     error.dni = "Campo requerido";
+    // } else if (!regexDni.test(form.dni.trim())) {
+    //     error.dni = "Debe contener solo numeros y 8 caracteres "
+    // }
 
 
     // Fecha de nacimiento
-    function calcularEdad() {
-        const d = form.fechaNac;
-        const inDate = new Date(d);
-        const anio = inDate.getFullYear();
-        const fecActual = new Date();
-        const fecAnio = fecActual.getFullYear();
-        const edad = fecAnio - anio;
-        if (edad < 18) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    if (!form.fechaNac.trim()) {
-        error.fechaNac = "Campo requerido";
-    } else if (calcularEdad()) {
-        error.fechaNac = "Debe ser mayor de edad"
-    }
+    // function calcularEdad() {
+    //     const d = form.fechaNac;
+    //     const inDate = new Date(d);
+    //     const anio = inDate.getFullYear();
+    //     const fecActual = new Date();
+    //     const fecAnio = fecActual.getFullYear();
+    //     const edad = fecAnio - anio;
+    //     if (edad < 18) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+    // if (!form.fechaNac.trim()) {
+    //     error.fechaNac = "Campo requerido";
+    // } else if (calcularEdad()) {
+    //     error.fechaNac = "Debe ser mayor de edad"
+    // }
 
-    // Teléfono
-    if (!form.telefono.trim()) {
-        error.telefono = "Campo requerido";
-    } else if (!regexTel.test(form.telefono.trim())) {
-        error.telefono = "Telefono invalido. Formato correcto: 54xxxxxxxxxx"
-    }
+    // // Teléfono
+    // if (!form.telefono.trim()) {
+    //     error.telefono = "Campo requerido";
+    // } else if (!regexTel.test(form.telefono.trim())) {
+    //     error.telefono = "Telefono invalido. Formato correcto: 54xxxxxxxxxx"
+    // }
 
     // Email
     if (!form.email.trim()) {
@@ -94,10 +94,10 @@ const validacion = (form) => {
         error.email = "email invalido"
     }
 
-    // Direccion
-    if (!form.direccion.trim()) {
-        error.direccion = "Campo requerido";
-    }
+    // // Direccion
+    // if (!form.direccion.trim()) {
+    //     error.direccion = "Campo requerido";
+    // }
 
     // Contraseña
     if (!form.password.trim()) {
@@ -156,7 +156,7 @@ const formReg = () => {
                 />
                 {error.apellido && <p style={styles}>{error.apellido}</p>}
 
-                <h4 className={style.h4}>DNI</h4>
+                {/* <h4 className={style.h4}>DNI</h4>
                 <input
                     className={style.input}
                     id="dni"
@@ -196,7 +196,7 @@ const formReg = () => {
                     onBlur={handleBlur}
                     required
                 />
-                {error.telefono && <p style={styles}>{error.telefono}</p>}
+                {error.telefono && <p style={styles}>{error.telefono}</p>} */}
 
                 <h4 className={style.h4}>Email</h4>
                 <input
@@ -211,7 +211,8 @@ const formReg = () => {
                     required
                 />
                 {error.email && <p style={styles}>{error.email}</p>}
-                <h4 className={style.h4}>Dirección</h4>
+
+                {/* <h4 className={style.h4}>Dirección</h4>
                 <input
                     className={style.input}
                     id="direccion"
@@ -223,7 +224,7 @@ const formReg = () => {
                     onBlur={handleBlur}
                     required
                 />
-                {error.direccion && <p style={styles}>{error.direccion}</p>}
+                {error.direccion && <p style={styles}>{error.direccion}</p>} */}
 
                 <h4 className={style.h4}>Contraseña</h4>
                 <input

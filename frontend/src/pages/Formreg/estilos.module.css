@@ -12,6 +12,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgba(222, 184, 135, 0.418);
+  border-radius: 4vh;
 }
 
 .input{
