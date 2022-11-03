@@ -1,13 +1,53 @@
 .container{
-    width: 20rem;
-    height: 30rem;
-    border-color: black;
-    border-radius: 2rem;
-    border-width: 2rem;
-    border-style: double;
-    display: grid;
-    justify-content: center;
-    text-align: center;
-    justify-content: center;
+    width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(222, 184, 135, 0.418);
+  border-radius: 4vh;
+}
+
+.h4{
+    color:chocolate;
+    font:italic;
+    font-size: large;
+}
+
+.input{
+    background: rgba(226, 142, 64, 0.5);
+    border: 1px solid #393939;
+    border-radius: 5px 5px 5px 5px;
+    color: #000000;
+    font-size: 12px;
+    padding: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     
+}
+
+
+.submit{
+    background-color: #49AFCD;
+    background-image: -moz-linear-gradient(center top , #5BC0DE, #2F96B4);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.35) inset, 0 10px 20px rgba(255, 255, 255, 0.12) inset, 0 -10px 30px rgba(0, 0, 0, 0.12) inset;
+    color: rgb(0, 0, 0);
+    display: block;
+    float: left;
+    font-size: 15px;
+    font-optical-sizing:initial;
+    margin-top: 20px;
+    padding: 10px 5px;
+    text-align: center;
+    text-decoration:none;
+    width: 150px;
+}
+
+.submit:hover {
+    background-color: #2F96B4 !important;
+    background-image: -moz-linear-gradient(center top , #2F96B4, #2F96B4);
 }
