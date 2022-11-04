@@ -7,6 +7,7 @@ import Formreg from './pages/Formreg/Formreg';
 import { PrivateRoutes, PublicRoutes } from './Utilities/routes';
 import GuardAuth from './guards/GuardAuth';
 import { lazy } from 'react';
+import "./App.css"
 
 const Login = lazy(() => import('./pages/Login/Login'));
 const Detail = lazy(() => import('./pages/Detail/Detail'));
@@ -14,7 +15,7 @@ const Dashboard = lazy(() => import('./pages/Dashboard/Dashboard'));
 
 function App() {
 	return (
-		<div>
+		<div className='App'>
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/detail/:id' element={<Detail />} />
