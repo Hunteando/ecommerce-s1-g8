@@ -1,7 +1,6 @@
-export interface ProductsI {
-	id?: object;
-	name: object;
-	price: object;
+export interface ProductI {
+	name: string;
+	price: number;
 	brand: object;
 	image_link: object;
 	description: object;

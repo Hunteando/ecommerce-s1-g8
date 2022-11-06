@@ -1,25 +1,25 @@
-import { Request, Response, Router } from 'express';
+import { NextFunction, Request, Response, Router } from 'express';
 import { ProductsCrud } from '../controllers/products.controller';
 
 const router: Router = Router();
 const productCrud = new ProductsCrud();
 
-router.get('/', async (_, res: Response) => {
+router.get('/', async (req: Request, res: Response, next: NextFunction) => {
 	try {
-		const products = await productCrud.getAllProducts();
+		const products = await productCrud.getProducts();
 		res.json({ data: products });
 	} catch (err) {
-		res.status(404).json({ error: (err as Error).message });
+		next(err);
 	}
 });
 
-router.get('/:id', async (req: Request, res: Response) => {
+router.get('/:id', async (req: Request, res: Response, next: NextFunction) => {
 	try {
 		const { id } = req.params;
 		const product = await productCrud.getProduct(+id);
 		res.json({ data: product });
 	} catch (err) {
-		res.status(404).json({ error: (err as Error).message });
+		next(err);
 	}
 });
 

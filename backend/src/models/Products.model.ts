@@ -61,7 +61,7 @@ Products.init(
 		},
 
 		image_link: {
-			type: DataTypes.JSON,
+			type: DataTypes.STRING,
 			allowNull: false,
 		},
 		description: {
@@ -78,13 +78,17 @@ Products.init(
 	{
 		sequelize,
 		modelName: 'products',
+		timestamps: true,
 	}
 );
 
-Products.belongsToMany(Brands, {
-	through: 'products_brands',
-	timestamps: false,
-});
+Brands.hasMany(Products);
+Products.belongsTo(Brands);
+
+// Products.belongsToMany(Brands, {
+// 	through: 'products_brands',
+// 	timestamps: false,
+// });
 // One to Many
 // Brands.hasMany(Products);
 

@@ -14,9 +14,11 @@ Brands.init(
 			allowNull: false,
 		},
 	},
+
 	{
 		sequelize,
 		modelName: 'brands',
+		timestamps: true,
 	}
 );
 
