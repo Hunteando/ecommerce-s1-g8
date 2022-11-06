@@ -9,6 +9,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 		top: 13,
 		border: `2px solid ${theme.palette.background.paper}`,
 		padding: '0 4px',
+		
 	},
 }));
 
@@ -16,7 +17,7 @@ export default function Cart() {
 	return (
 		<IconButton aria-label='cart' style={{ color: 'var(--second-color)' }}>
 			<StyledBadge badgeContent={1} color='secondary'>
-				<ShoppingCartIcon style={{ color: 'var(--second-color)' }} />
+				<ShoppingCartIcon style={{ color: 'var(--second-color)', fontSize:"30px" }} />
 			</StyledBadge>
 		</IconButton>
 	);

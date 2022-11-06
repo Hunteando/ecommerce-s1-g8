@@ -6,19 +6,21 @@ import Style from './Footer.module.css';
 
 export function Footer() {
 	return (
-		<>
-			<section className={Style.container}>
-				<article>Sobre Makeup</article>
-				<article>Ayuda</article>
-				<article>Terminos y condiciones</article>
-				<article>Logo</article>
-			</section>
-			<article className={Style.redes}>
-				<FacebookOutlinedIcon />
-				<InstagramIcon />
-				<YouTubeIcon />
-				<TwitterIcon />
-			</article>
-		</>
+		<footer className={Style.footer}>
+			<div className={Style.footerContainer}>
+				<section className={Style.container}>
+					<article>Sobre Makeup</article>
+					<article>Ayuda</article>
+					<article>Terminos y condiciones</article>
+					<article>Logo</article>
+				</section>
+				<article className={Style.redes}>
+					<FacebookOutlinedIcon className={Style.icon} />
+					<InstagramIcon className={Style.icon} />
+					<YouTubeIcon className={Style.icon} />
+					<TwitterIcon className={Style.icon} />
+				</article>
+			</div>
+		</footer>
 	);
 }

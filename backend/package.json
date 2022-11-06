@@ -7,7 +7,7 @@
     "dev": "nodemon src/index.ts",
     "start": "node src/index.js",
     "format": "prettier --write .",
-		"lint": "eslint --fix . --ext .ts"
+    "lint": "eslint --fix . --ext .ts"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +19,9 @@
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "pg": "^8.8.0",
+    "sequelize": "^6.25.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
