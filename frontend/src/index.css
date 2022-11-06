@@ -6,6 +6,8 @@
 	--main-modal-color: #f5f6fa(247, 222, 30, 0.85);
 	--second-modal-color: #2f3640(34, 34, 34, 0.85);
 	--container-width: 75rem;
+	/*  para que todo lo que se desborde en horizontal se oculte y no genere barra de desplazamiento en horizontal */
+	overflow-x: hidden;
 }
 html {
 	box-sizing: border-box;
@@ -24,6 +26,7 @@ body {
 	margin: 0;
 	/*  para que todo lo que se desborde en horizontal se oculte y no genere barra de desplazamiento en horizontal */
 	overflow-x: hidden;
+	
 }
 /*  para que las imagenes se adapten a la maxima anchura de su contenedor  */
 img {

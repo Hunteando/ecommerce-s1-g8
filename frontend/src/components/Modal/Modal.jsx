@@ -28,7 +28,15 @@ export function Modal({ title, root }) {
 						</button>
 					</article>
 				</header>
-				<article>{/* <Login /> */}</article>
+				<article>
+					<form>
+						<label>usuario</label>
+						<input type='text' />
+						<label>contrasena</label>
+						<input type='password' />
+						<input type='submit' disabled />
+					</form>
+				</article>
 			</div>
 		</section>
 	);
