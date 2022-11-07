@@ -23,7 +23,7 @@ function App() {
 				<Route path='/detail/:id' element={<Detail />} />
 				<Route path='/car' element={<Car/>} />
 				<Route path={PublicRoutes.LOGIN} element={<Login />} />
-				<Route path='/formreg' element={<Formreg />} />
+				<Route path='/signup' element={<Formreg />} />
 				<Route element={<GuardAuth />}>
 					<Route path={`${PrivateRoutes.PRIVATE}/*`} element={<Private />} />
 				</Route>
