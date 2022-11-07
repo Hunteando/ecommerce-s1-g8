@@ -12,7 +12,7 @@ export function Header({ showSearch }) {
 
 	window.addEventListener('scroll', () => {
 		const ejeY = window.scrollY;
-		if (ejeY > 70) {
+		if (ejeY > 10) {
 			setState(true);
 		} else {
 			setState(false);
@@ -36,6 +36,22 @@ export function Header({ showSearch }) {
 					/>
 				</label>
 				<div className={style.loginCarrito}>
+
+					<div onClick={handleOpenModal}>
+						<AccountCircleIcon
+							fontSize='large'
+							style={{ color: state ? '#ffff' : '' }}
+						/>
+					</div>
+
+					<article style={{ color: state ? '#ffff' : '' }}>
+						<p>Mi cuenta</p>
+						<p>iniciar sesion o registrarme</p>
+					</article>
+					<Link to='/car'>
+						<CustomizedBadges />
+					</Link>
+
 					<Link to={'/login'}>
 						<div>
 							<AccountCircleIcon
@@ -57,6 +73,7 @@ export function Header({ showSearch }) {
 						</article>
 					</Link>
 					<CustomizedBadges />
+
 				</div>
 			</header>
 		</div>

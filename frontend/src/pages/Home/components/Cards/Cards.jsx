@@ -15,6 +15,7 @@ export function Cards() {
 	const getApiproduct = async () => {
 		try {
 			const result = await getByTypeProducts('Blush');
+			console.log(`este es ${result}`)
 			setProducts(createProductAdapter(result));
 		} catch (error) {
 			console.log(error);
@@ -23,7 +24,7 @@ export function Cards() {
 	useEffect(() => {
 		getApiproduct();
 	}, []);
-	console.log(product);
+	
 
 	/* segunda opcion */
 

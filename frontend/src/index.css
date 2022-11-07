@@ -26,7 +26,7 @@ body {
 	margin: 0;
 	/*  para que todo lo que se desborde en horizontal se oculte y no genere barra de desplazamiento en horizontal */
 	overflow-x: hidden;
-	
+    padding-right: 0 !important;
 }
 /*  para que las imagenes se adapten a la maxima anchura de su contenedor  */
 img {
