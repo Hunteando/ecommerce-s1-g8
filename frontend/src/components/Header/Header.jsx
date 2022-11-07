@@ -15,7 +15,7 @@ export function Header({ showSearch }) {
 
 	window.addEventListener('scroll', () => {
 		const ejeY = window.scrollY;
-		if (ejeY > 70) {
+		if (ejeY > 10) {
 			setState(true);
 		} else {
 			setState(false);
@@ -50,7 +50,9 @@ export function Header({ showSearch }) {
 						<p>Mi cuenta</p>
 						<p>iniciar sesion o registrarme</p>
 					</article>
-					<CustomizedBadges />
+					<Link to='/car'>
+						<CustomizedBadges />
+					</Link>
 				</div>
 			</header>
 		</div>

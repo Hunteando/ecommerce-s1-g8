@@ -13,10 +13,6 @@
 
 @media screen and (min-width: 1200px) {
 	.container_order {
-		position: static;
-		transform: translate(0, 0);
-		width: 30vw;
-		border: 2px solid;
-		margin: 1rem 0 0 1rem;
+		display: none;
 	}
 }

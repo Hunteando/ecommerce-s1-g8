@@ -10,6 +10,7 @@ import { lazy } from 'react';
 import './App.css';
 import { Private } from './pages/Private/Private';
 import { RoutesWithNotFound } from './Utilities/RoutesWithNotFound';
+import Car from './pages/cars/Car';
 
 const Login = lazy(() => import('./pages/Login/Login'));
 // const Detail = lazy(() => import('./pages/Detail/Detail'));
@@ -20,6 +21,7 @@ function App() {
 			<RoutesWithNotFound>
 				<Route path='/' element={<Home />} />
 				<Route path='/detail/:id' element={<Detail />} />
+				<Route path='/car' element={<Car/>} />
 				<Route path={PublicRoutes.LOGIN} element={<Login />} />
 				<Route path='/formreg' element={<Formreg />} />
 				<Route element={<GuardAuth />}>
@@ -31,3 +33,4 @@ function App() {
 }
 
 export default App;
+			
