@@ -8,7 +8,9 @@ const empatyUserState = {
 
 export const userSlice = createSlice({
 	name: 'user',
-	initialState: empatyUserState,
+	initialState: localStorage.getItem('user')
+		? JSON.parse(localStorage.getItem('user'))
+		: empatyUserState,
 	reducers: {
 		createUser: (state, action) => {
 			return action.payload;

@@ -3,5 +3,7 @@ export const PublicRoutes = {
 };
 
 export const PrivateRoutes = {
+	PRIVATE: 'private',
 	DASHBOARD: 'Dashboard',
+	HOMEPRIVATE: 'HomePrivate',
 };
