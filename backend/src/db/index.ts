@@ -1,16 +1,16 @@
 import 'dotenv/config';
-import { Sequelize } from 'sequelize';
+import { DataSource } from 'typeorm';
+import { Product } from '../entities/product.entity';
 
-const { DB_NAME, DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+const { DB_USER, DB_PASSWORD, DB_NAME, DB_HOST, DB_PORT } = process.env;
 
-export const sequelize = new Sequelize(
-	DB_NAME || '',
-	DB_USER || '',
-	DB_PASSWORD || '',
-	{
-		host: DB_HOST,
-		dialect: 'postgres',
-		logging: false,
-		native: false,
-	}
-);
+export const AppDataSource = new DataSource({
+	type: 'postgres',
+	host: DB_HOST,
+	username: DB_USER,
+	password: DB_PASSWORD,
+	port: !DB_PORT ? 5432 : +DB_PORT,
+	database: DB_NAME,
+	entities: [Product],
+	synchronize: true,
+});
