@@ -1,7 +1,14 @@
 import cors from 'cors';
 import 'dotenv/config';
-import express, { Application, json } from 'express';
+import express, {
+	Application,
+	json,
+	NextFunction,
+	Request,
+	Response,
+} from 'express';
 import morgan from 'morgan';
+import { HTTP_CODE } from './codes';
 import routes from './routes';
 
 const { PORT } = process.env;
@@ -16,6 +23,7 @@ class Server {
 		this.views();
 		this.middlewares();
 		this.router();
+		this.handleError();
 	}
 
 	views() {
@@ -36,6 +44,19 @@ class Server {
 				.status(404)
 				.render('404.ejs', { title: 'Page not found', status: '404' });
 		});
+	}
+
+	handleError() {
+		this.app.use(
+			(error: Error, req: Request, res: Response, next: NextFunction) => {
+				console.log('Error ->', error.message);
+				res.status(HTTP_CODE.SERVER_ERROR).send({
+					code: HTTP_CODE.SERVER_ERROR,
+					message: 'An internal server error occurred',
+				});
+				next();
+			}
+		);
 	}
 
 	listen() {
