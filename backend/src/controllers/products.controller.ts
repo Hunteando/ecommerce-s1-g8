@@ -1,18 +1,10 @@
 import { HTTP_CODE } from '../codes';
-import { Brands } from '../models/Brands.model';
-import { Products } from '../models/Products.model';
+import { CreateProductDto } from '../dto/create-product.dto';
+import { Product } from '../entities/product.entity';
 
 export class ProductsCrud {
 	async getProducts() {
-		const products = await Products.findAll({
-			include: {
-				model: Brands,
-				attributes: ['name'],
-			},
-			attributes: {
-				exclude: ['createdAt', 'updatedAt', 'brandId'],
-			},
-		});
+		const products = await Product.find();
 		if (!Object.entries(products).length)
 			throw new Error(
 				`Products are not avalible | code: ${HTTP_CODE.NOT_FOUND}`
@@ -21,10 +13,15 @@ export class ProductsCrud {
 	}
 
 	async getProduct(id: number) {
-		const product = await Products.findByPk(id);
+		const product = await Product.findOneBy({ id });
 		if (!product)
 			throw new Error(`Product not found | code: ${HTTP_CODE.NOT_FOUND}`);
 		return product;
+	}
+
+	async createProduct(product: CreateProductDto) {
+		const newProduct = Product.create({ ...product });
+		return await Product.save(newProduct);
 	}
 
 	// async updateProduct(id: number, product: any) {

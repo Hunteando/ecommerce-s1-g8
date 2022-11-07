@@ -1,14 +1,14 @@
 import 'dotenv/config';
-import { sequelize } from './db';
+import 'reflect-metadata';
+import { AppDataSource } from './db';
 import Server from './server';
 
 const server = new Server();
 
 (async () => {
 	try {
-		await sequelize.sync({ force: true });
+		await AppDataSource.initialize();
 		console.log('Connection has been established successfully');
-
 		server.listen();
 	} catch (err) {
 		console.log(err);

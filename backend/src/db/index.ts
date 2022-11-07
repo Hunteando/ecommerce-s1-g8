@@ -1,26 +1,16 @@
 import 'dotenv/config';
-import { Sequelize } from 'sequelize';
+import { DataSource } from 'typeorm';
+import { Product } from '../entities/product.entity';
 
-const { DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, NODE_ENV } = process.env;
+const { DB_USER, DB_PASSWORD, DB_NAME, DB_HOST, DB_PORT } = process.env;
 
-export const sequelize = new Sequelize(
-	DB_NAME as string,
-	DB_USER as string,
-	DB_PASSWORD as string,
-	{
-		host: DB_HOST,
-		dialect: 'postgres',
-		logging: false,
-		native: false,
-		dialectOptions:
-			NODE_ENV === 'production'
-				? {
-						ssl: {
-							require: true,
-							rejectUnauthorized: false,
-						},
-						// eslint-disable-next-line no-mixed-spaces-and-tabs
-				  }
-				: {},
-	}
-);
+export const AppDataSource = new DataSource({
+	type: 'postgres',
+	host: DB_HOST,
+	username: DB_USER,
+	password: DB_PASSWORD,
+	port: !DB_PORT ? 5432 : +DB_PORT,
+	database: DB_NAME,
+	entities: [Product],
+	synchronize: true,
+});
