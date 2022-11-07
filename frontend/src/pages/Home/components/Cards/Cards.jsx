@@ -3,8 +3,10 @@ import { CardMakeup } from '../Card/CardMakeup';
 import style from './Cards.module.css';
 
 export function Cards() {
+
 	const { products, loading } = useProducts();
 	console.log(products, loading);
+
 
 	if (loading) return <>Cargando Productos....</>;
 

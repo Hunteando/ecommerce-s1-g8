@@ -1,7 +1,23 @@
 .container_desk {
-	width: 90%;
+	max-width: 1200px;
+	width: 80%;
 	display: flex;
 	justify-content: space-around;
-	margin: 0 auto;
+	margin: 20px auto;
 	padding-right: 10px;
+	gap: 30px;
+	position: relative;
+}
+
+@media screen and (min-width: 1200px) {
+	.container_desk {
+		max-width: 1200px;
+		width: 80%;
+		display: flex;
+		justify-content: space-around;
+		margin: 140px auto 0 auto;
+		padding-right: 10px;
+		gap: 30px;
+		position: relative;
+	}
 }
