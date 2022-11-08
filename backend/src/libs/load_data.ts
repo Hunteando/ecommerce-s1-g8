@@ -1,36 +1,54 @@
-// import fetch, { Response } from 'node-fetch';
 import axios from 'axios';
-
-// async function getProducts(brand: string) {
-// 	const response: Response = await fetch(
-// 		`http://makeup-api.herokuapp.com/api/v1/products.json?brand=${brand}`
-// 	);
-// 	if (!response.ok)
-// 		throw new Error(`Failed to get products: ${response.status}`);
-// 	const data = await response.json();
-
-// 	const products = JSON.stringify(data);
-// 	products;
-// }
-
-// getProducts('maybelline');
-interface Product {
-	name: string;
+interface ApiI {
+	brand: string;
+	category: string;
+	product_colors: ColorObj[];
 }
 
-async function getProductsAPI(brand: string) {
-	let products: Product[] = [];
+type ResObj = {
+	name: string;
+};
+
+type ColorObj = {
+	hex_value: string;
+	color_name: string;
+};
+
+const uniqueArray = (arr: ResObj[]) =>
+	[...new Set(arr.map(o => JSON.stringify(o)))].map(s => JSON.parse(s));
+
+async function loadTablesAPI(table: string): Promise<ResObj[] | undefined> {
+	let products: ApiI[] = [];
 	try {
-		const arr: Product[] = [];
 		const { data } = await axios.get(
-			`http://makeup-api.herokuapp.com/api/v1/products.json?brand=${brand}`
+			`http://makeup-api.herokuapp.com/api/v1/products.json`
 		);
 		products = data;
+		const arr: ResObj[] = [];
+		const arrColor: ColorObj[] = [];
 		products.forEach((product, i) => {
-			if (i < 2) arr.push(product);
-			else return;
+			// if (i < 50)
+			if (table === 'brand') {
+				arr.push({
+					name: product.brand || table + ' New',
+				});
+			} else if (table === 'category') {
+				arr.push({
+					name: product.category || table + ' New',
+				});
+			} else if (table === 'color') {
+				// FIXME:No carga los colores en la base de datos
+				const obj = {
+					hex_value: product?.product_colors[i]?.hex_value || '#FB8684',
+					color_name: product?.product_colors[i]?.color_name || 'Deep Coral',
+				};
+				arrColor.push(obj);
+			}
+
+			// else return;
 		});
-		return arr;
+		const unique: ResObj[] = uniqueArray(arr);
+		return unique;
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
 			console.log(error);
@@ -41,4 +59,4 @@ async function getProductsAPI(brand: string) {
 	}
 }
 
-export default getProductsAPI;
+export { loadTablesAPI };

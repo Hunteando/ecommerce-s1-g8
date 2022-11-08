@@ -9,5 +9,5 @@ export class Color extends BaseEntity {
 	readonly hex_value!: string;
 
 	@Column({ type: 'varchar', length: 20 })
-	readonly colour_name!: string;
+	readonly color_name!: string;
 }
