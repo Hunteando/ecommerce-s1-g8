@@ -8,6 +8,7 @@ import express, {
 	Response,
 } from 'express';
 import morgan from 'morgan';
+import { ZodError } from 'zod';
 import { HTTP_CODE } from './codes';
 import routes from './routes';
 
@@ -49,7 +50,16 @@ class Server {
 	handleError() {
 		this.app.use(
 			(error: Error, req: Request, res: Response, next: NextFunction) => {
-				console.log('Error ->', error.message);
+				if (error instanceof ZodError)
+					console.log(
+						'Error ->',
+						error.issues.map(issue => ({
+							message: issue.message,
+							path: issue.path,
+						}))
+					);
+				else console.log('Error ->', error.message);
+
 				res.status(HTTP_CODE.SERVER_ERROR).send({
 					code: HTTP_CODE.SERVER_ERROR,
 					message: 'An internal server error occurred',
