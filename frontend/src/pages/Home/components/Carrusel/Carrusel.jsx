@@ -76,7 +76,8 @@ export function Carrusel(props) {
 	return (
 		<section style={{ marginTop: '70px' }}>
 			<CarruselImg
-				src={`../../../src/assets/img/${selectedImage}`}
+				src={`../../src/assets/img/${selectedImage}`} // Desarrollo
+				// src={`./assets/img/${selectedImage}`} // Produccion
 				alt='maquillaje'
 				className={loaded ? 'loaded' : ''}
 				onLoad={() => {
