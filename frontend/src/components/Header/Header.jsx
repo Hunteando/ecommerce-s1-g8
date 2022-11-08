@@ -3,19 +3,16 @@ import SearchIcon from '@mui/icons-material/Search';
 import style from './Header.module.css';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Link } from 'react-router-dom';
-import { openModal } from '@/Utilities/openModal';
+
 import { useState } from 'react';
 
 export function Header({ showSearch }) {
 	const [state, setState] = useState(false);
-
-	function handleOpenModal() {
-		openModal();
-	}
+	const [login, setLogin] = useState(false);
 
 	window.addEventListener('scroll', () => {
 		const ejeY = window.scrollY;
-		if (ejeY > 70) {
+		if (ejeY > 10) {
 			setState(true);
 		} else {
 			setState(false);
@@ -39,6 +36,7 @@ export function Header({ showSearch }) {
 					/>
 				</label>
 				<div className={style.loginCarrito}>
+
 					<div onClick={handleOpenModal}>
 						<AccountCircleIcon
 							fontSize='large'
@@ -50,7 +48,32 @@ export function Header({ showSearch }) {
 						<p>Mi cuenta</p>
 						<p>iniciar sesion o registrarme</p>
 					</article>
+					<Link to='/car'>
+						<CustomizedBadges />
+					</Link>
+
+					<Link to={'/login'}>
+						<div>
+							<AccountCircleIcon
+								fontSize='large'
+								style={{ color: state ? '#ffff' : '' }}
+							/>
+						</div>
+					</Link>
+					<Link to={'/login'}>
+						<article style={{ color: state ? '#ffff' : '' }}>
+							{login ? (
+								<>Cerrar sesion</>
+							) : (
+								<>
+									<p>Mi cuenta</p>
+									<p>iniciar sesion o registrarme</p>
+								</>
+							)}
+						</article>
+					</Link>
 					<CustomizedBadges />
+
 				</div>
 			</header>
 		</div>

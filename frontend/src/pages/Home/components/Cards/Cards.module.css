@@ -4,6 +4,7 @@
 	grid-template-columns: 45% 45%;
 	justify-content: space-between;
 	justify-items: center;
+	
 }
 .item_card {
 	width: 105%;
@@ -40,4 +41,5 @@
 		width: 100%;
 		grid-template-columns: 30% 30% 30%;
 	}
+	
 }

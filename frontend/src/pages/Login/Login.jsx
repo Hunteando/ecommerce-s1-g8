@@ -1,5 +1,5 @@
 import Title from './components/Title/Title';
-
+import { Link } from 'react-router-dom';
 import Style from './Login.module.css';
 import { Footer } from '../../components/Footer/Footer';
 import { Header } from '../../components/Header/Header';
@@ -77,6 +77,12 @@ const Login = () => {
 
 				<div>
 					<label htmlFor=''>¿Olvido su contraseña?</label>
+				</div>
+				<div>
+					<label htmlFor=''>
+						¿No tienes una cuenta?
+						<Link to='/signup'>Registrar aquí</Link>
+					</label>
 				</div>
 			</form>
 
