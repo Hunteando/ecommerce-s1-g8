@@ -24,6 +24,8 @@ router.get('/:name', async (req: Request, res: Response) => {
 		.into(table as EntityTarget<Table>)
 		.values(data)
 		.execute();
+	// console.log(data);
+
 	res.json({ data });
 });
 

@@ -12,13 +12,15 @@ import {
 import { Brand } from './brand.entity';
 import { Category } from './category.entity';
 import { Color } from './color.entity';
+import { Tag } from './Tag.entity';
+import { Typepro } from './Typepro.entity';
 
 @Entity()
 export class Product extends BaseEntity {
 	@PrimaryGeneratedColumn()
 	readonly id!: number;
 
-	@Column({ type: 'varchar', length: 100, unique: true })
+	@Column({ type: 'varchar', length: 150, unique: true })
 	readonly name!: string;
 
 	@Column({ type: 'float' })
@@ -41,6 +43,16 @@ export class Product extends BaseEntity {
 		cascade: true, // Si no existe el valor en la tabla lo crea
 	})
 	readonly category!: Category;
+
+	@ManyToOne(() => Typepro, typepro => typepro.products, {
+		eager: true, // Trae explicita la propiedad brand en la consulta
+		cascade: true, // Si no existe el valor en la tabla lo crea
+	})
+	readonly typepro!: Typepro;
+
+	@ManyToMany(() => Tag)
+	@JoinTable({ name: 'product_tag' })
+	readonly tags!: Tag[];
 
 	@ManyToMany(() => Color)
 	@JoinTable({ name: 'product_color' })

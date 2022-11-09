@@ -11,6 +11,6 @@ const server = new Server();
 		console.log('Connection has been established successfully');
 		server.listen();
 	} catch (err) {
-		console.log(err);
+		console.log('Error ->', err);
 	}
 })();
