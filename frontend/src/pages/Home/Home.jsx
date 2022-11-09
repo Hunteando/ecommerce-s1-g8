@@ -8,7 +8,9 @@ import { useState } from 'react';
 import { Cards } from './components/Cards/Cards';
 import style from './Home.module.css';
 import { Search } from '@/components/search/Search';
-import SelectOrganize from './components/SearchOrganize/SelectOrganize';
+
+import SelectOrganize from './components/SelectOrganize/SelectOrganize';
+
 
 export function Home() {
 	const images = ['1.jpg', '2.jpg', '3.jpg'];

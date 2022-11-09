@@ -8,18 +8,27 @@ import { useEffect, useState } from 'react';
 import List from '@mui/material/List';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import PropTypes from 'prop-types';
 
-// eslint-disable-next-line react/prop-types
-export function Filter1({ lista, tipoDeFiltro }) {
-	const [checked, setChecked] = useState([0]);
-	const [listas, setListas] = useState([]);
+export function TypesOfFilters({
+	filterList,
+	typeFilter,
+	setFilter,
+	disable,
+	setAccordion,
+	accordion,
+	checked,
+}) {
+	// const [checked, setChecked] = useState([]);
+	const [table, setTable] = useState([]);
 
 	useEffect(() => {
-		setListas(lista);
+		setTable(filterList);
 	}, []);
 
 	const handleToggle = value => () => {
 		const currentIndex = checked.indexOf(value);
+		console.log(currentIndex);
 		const newChecked = [...checked];
 
 		if (currentIndex === -1) {
@@ -27,28 +36,36 @@ export function Filter1({ lista, tipoDeFiltro }) {
 		} else {
 			newChecked.splice(currentIndex, 1);
 		}
+		console.log(newChecked);
 
-		setChecked(newChecked);
+		// setChecked(newChecked);
+		setFilter(newChecked);
+	};
+	const handleExpanded = value => e => {
+		if (!accordion) setAccordion(value);
+		console.log(accordion, value);
+		if (accordion === value) setAccordion('');
 	};
 	return (
-		<div>
-			<Accordion>
+		<section>
+			<Accordion disabled={disable}>
 				<AccordionSummary
 					expandIcon={<ExpandMoreIcon />}
 					aria-controls='panel1a-content'
 					id='panel1a-header'
+					onClick={handleExpanded(typeFilter)}
 				>
-					<Typography>{tipoDeFiltro}</Typography>
+					<Typography>{typeFilter}</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
 					<List
 						sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
 					>
-						{listas.map(value => {
+						{table.map(value => {
 							const labelId = `checkbox-list-label-${value}`;
 
 							return (
-								<ListItem key={value} disablePadding>
+								<ListItem key={value}>
 									<ListItemButton
 										role={undefined}
 										onClick={handleToggle(value)}
@@ -71,6 +88,15 @@ export function Filter1({ lista, tipoDeFiltro }) {
 					</List>
 				</AccordionDetails>
 			</Accordion>
-		</div>
+		</section>
 	);
 }
+TypesOfFilters.propTypes = {
+	filterList: PropTypes.array,
+	typeFilter: PropTypes.string,
+	setFilter: PropTypes.func,
+	disable: PropTypes.bool,
+	setAccordion: PropTypes.func,
+	accordion: PropTypes.string,
+	checked: PropTypes.array,
+};

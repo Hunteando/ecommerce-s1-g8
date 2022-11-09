@@ -1,0 +1,28 @@
+.title {
+	font-weight: bold;
+}
+.filter {
+	border: 1px solid #00000024;
+	margin: 5px 5px;
+	background-color: #fff;
+	color: #333333;
+	height: 32px;
+	display: inline-flex;
+	padding: 10px;
+	font-size: 14px;
+	align-items: center;
+	border-radius: 16px;
+	vertical-align: middle;
+	justify-content: center;
+}
+
+.x {
+	color: #fff;
+	background-color: #333333;
+	width: 40px;
+	height: 40px;
+	border-radius: 40px;
+	margin: 5px;
+	text-align: center;
+	padding-right: 4px;
+}
