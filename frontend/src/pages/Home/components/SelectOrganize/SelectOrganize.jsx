@@ -3,7 +3,7 @@ import { useState } from 'react';
 import style from './Search.module.css';
 
 const SelectOrganize = () => {
-	const [value, setValue] = useState('click Aquí');
+	const [value, setValue] = useState('Más Vendidos');
 	const [open, setOpen] = useState(false);
 
 	const handleChange = e => {
