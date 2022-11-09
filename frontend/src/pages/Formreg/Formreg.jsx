@@ -1,7 +1,10 @@
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from "../../components/Header/Header"
-import { validacionForm } from "./validacion";
+import { useValidation } from "../../hook/useValidation";
 import style from "./estilos.module.css"
+import { useState } from "react";
+import { Link } from 'react-router-dom';
+
 
 // Inicializando formulario
 
@@ -25,11 +28,13 @@ const styles = {
 
 // Funcion que establece los parámetros y logica de validacion de campos
 
-const validacion = (form) => {
+const validation = (form) => {
     const error = {};
     const regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
     const regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
     const regexNomAp = /^.{2,30}$/;
+    const regexEmailCount = /^.{2,50}$/;
+    const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/;
     // const regexTel = /^54[0-9]{10}$/;
     // const regexDni = /^[0-9]{8}$/;
 
@@ -92,7 +97,10 @@ const validacion = (form) => {
         error.email = "Campo requerido";
     } else if (!regexEmail.test(form.email.trim())) {
         error.email = "email invalido"
+    } else if (!regexEmailCount.test(form.email.trim())) {
+        error.email = "Debe contener menos de 50 caracteres"
     }
+
 
     // // Direccion
     // if (!form.direccion.trim()) {
@@ -102,6 +110,8 @@ const validacion = (form) => {
     // Contraseña
     if (!form.password.trim()) {
         error.password = "Campo requerido";
+    } else if (!regexPassword.test(form.password.trim())) {
+        error.password = "Minimo 8 caracteres, Maximo 15, Al menos una letra mayúscula, Al menos una letra minucula, Al menos un dígito, No espacios en blanco, Al menos 1 caracter especial"
     }
 
     // Confirmar contraseña
@@ -110,6 +120,8 @@ const validacion = (form) => {
         error.cPassword = "Campo requerido";
     } else if (form.cPassword !== form.password) {
         error.cPassword = "Las contraseñas no coinciden"
+    } else if (!regexNomAp.test(form.cPassword.trim())) {
+        error.cPassword = "Debe contener menos de 30 caracteres"
     }
 
     return error;
@@ -120,9 +132,9 @@ const validacion = (form) => {
 const formReg = () => {
 
 
-    const { form, error, handleChange, handleBlur, handleSubmit } = validacionForm(initForm, validacion);
+    const { form, error, handleChange, handleBlur, handleSubmit } = useValidation(initForm, validation);
 
-
+    const [showPassword, setShowPassword] = useState(false)
 
     return (
         <>
@@ -231,13 +243,14 @@ const formReg = () => {
                     className={style.input}
                     id="password"
                     name="password"
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     placeholder="Contraseña"
                     value={form.password}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     required
                 />
+                <label onClick={() => setShowPassword(!showPassword)}>Mostrar contraseña</label>
                 {error.password && <p style={styles}>{error.password}</p>}
 
                 <h4 className={style.h4}>Confirmar contraseña</h4>
@@ -245,18 +258,28 @@ const formReg = () => {
                     className={style.input}
                     id="cPassword"
                     name="cPassword"
-                    type="text"
+                    type={showPassword ? "text" : "password"}
                     placeholder="Contraseña"
                     value={form.cPassword}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     required
                 />
+                <label onClick={() => setShowPassword(!showPassword)}>Mostrar contraseña</label>
                 {error.cPassword && <p style={styles}>{error.cPassword}</p>}
 
 
                 <input className={style.submit} type="submit" value="Enviar" />
+
+                <div>
+                    <label htmlFor=''>
+                        ¿Ya tienes una cuenta?
+                        <Link to='/login'>Iniciar sesion</Link>
+                    </label>
+                </div>
+
             </form>
+
 
             <Footer />
         </>

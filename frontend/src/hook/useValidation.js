@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-export const validacionForm = (initForm, validarForm) => {
+
+export const useValidation = (initForm, validarForm) => {
 	const [form, setForm] = useState(initForm);
 	const [error, setError] = useState({});
 	// const [loading, setLoading] = useState(false);
