@@ -2,8 +2,8 @@ import { Button, FormControl, MenuItem, Select } from '@mui/material';
 import { useState } from 'react';
 import style from './Search.module.css';
 
-const Search = () => {
-	const [value, setValue] = useState('click Aquí');
+const SelectOrganize = () => {
+	const [value, setValue] = useState('Más Vendidos');
 	const [open, setOpen] = useState(false);
 
 	const handleChange = e => {
@@ -52,4 +52,4 @@ const Search = () => {
 	);
 };
 
-export default Search;
+export default SelectOrganize;
