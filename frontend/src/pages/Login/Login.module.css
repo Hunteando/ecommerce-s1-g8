@@ -1,7 +1,7 @@
 .container{
     width: 100%;
   max-width: 500px;
-  margin: 0 auto;
+  margin: 10rem auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,6 +9,7 @@
   background-color: rgba(222, 184, 135, 0.418);
   border-radius: 4vh;
 }
+
 
 .h4{
     color:chocolate;
