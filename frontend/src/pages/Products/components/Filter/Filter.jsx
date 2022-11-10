@@ -33,10 +33,26 @@ export function Filter() {
 				<>
 					<article>
 						<h3 onClick={handlerClearfilter}>Clear filter</h3>
-						<AppliedFilters filter={tags} title={'Tags List'} />
-						<AppliedFilters filter={brands} title={'Brands List'} />
-						<AppliedFilters filter={products} title={'Product Types'} />
-						<AppliedFilters filter={category} title={'Category'} />
+						<AppliedFilters
+							filter={tags}
+							title={'Tags List'}
+							setFilter={setTags}
+						/>
+						<AppliedFilters
+							filter={brands}
+							title={'Brands List'}
+							setFilter={setBrands}
+						/>
+						<AppliedFilters
+							filter={products}
+							title={'Product Types'}
+							setFilter={setProducts}
+						/>
+						<AppliedFilters
+							filter={category}
+							title={'Category'}
+							setFilter={setCategory}
+						/>
 					</article>
 				</>
 			)}

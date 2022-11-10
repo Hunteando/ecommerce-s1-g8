@@ -1,0 +1,25 @@
+.container_menu {
+	margin-top: 70px;
+	height: 60px;
+}
+.container_menu div {
+	max-width: 1200px;
+	height: 60px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: flex-start;
+}
+.productTypes {
+	padding-top: 20px;
+	max-width: 150px;
+	padding-right: 30px;
+	cursor: pointer;
+	transition: 1s ease;
+	height: inherit;
+	align-items: center;
+	color: #333;
+}
+.productTypes:hover {
+	color: #7f28c4;
+	border-bottom: 3px solid;
+}

@@ -1,0 +1,35 @@
+.container_cards {
+	display: flex;
+	flex-wrap: wrap;
+	padding-top: 1rem;
+	justify-content: center;
+}
+.container_cards_loading {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.item_card_loading {
+	margin-bottom: 1.25rem;
+	margin-left: 1.25rem;
+	height: 500px;
+}
+@media screen and (min-width: 1200px) {
+	.container_cards {
+		width: 900px;
+		display: flex;
+		justify-content: space-around;
+	}
+
+	.container_cards_loading {
+		width: 900px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+	.item_card_loading {
+		margin-bottom: 1.25rem;
+		margin-left: 1.25rem;
+		height: 500px;
+	}
+}

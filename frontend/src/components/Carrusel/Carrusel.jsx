@@ -7,15 +7,16 @@ const CarruselImg = styled.img`
 	height: 20vh;
 	opacity: 0;
 	transition: 1s;
+	margin-top: 10px;
 
 	&.loaded {
 		opacity: 1;
 	}
 	@media (min-width: 768px) {
-		height: 40vh;
+		height: 30vh;
 	}
 	@media (min-width: 991px) {
-		height: 50vh;
+		height: 35vh;
 	}
 `;
 const CarruselButtonPrev = styled.button`
@@ -74,7 +75,7 @@ export function Carrusel(props) {
 	};
 
 	return (
-		<section style={{ marginTop: '70px' }}>
+		<section>
 			<CarruselImg
 				src={`../../../src/assets/img/${selectedImage}`}
 				alt='maquillaje'

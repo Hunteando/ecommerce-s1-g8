@@ -8,7 +8,7 @@
 	width: 100%;
 	transform: translate(-100%, 0);
 	transition: transform 0.3s ease;
-	border: black 1px solid;
+	border: none;
 	background-color: #fff;
 	overflow-y: auto;
 }
@@ -26,13 +26,17 @@
 }
 .container_filter article h3 {
 	color: #227bbd;
+	cursor: pointer;
 }
 @media screen and (min-width: 1200px) {
 	.container_filter {
 		position: inherit;
 		transform: translate(0, 0);
-		width: 30vw;
+		width: 300px;
 		margin: 1rem 0 0 1rem;
 		z-index: 1;
+	}
+	.container_filter button {
+		display: none;
 	}
 }

@@ -19,7 +19,6 @@ export function TypesOfFilters({
 	accordion,
 	checked,
 }) {
-	// const [checked, setChecked] = useState([]);
 	const [table, setTable] = useState([]);
 
 	useEffect(() => {
@@ -28,7 +27,7 @@ export function TypesOfFilters({
 
 	const handleToggle = value => () => {
 		const currentIndex = checked.indexOf(value);
-		console.log(currentIndex);
+
 		const newChecked = [...checked];
 
 		if (currentIndex === -1) {
@@ -36,14 +35,12 @@ export function TypesOfFilters({
 		} else {
 			newChecked.splice(currentIndex, 1);
 		}
-		console.log(newChecked);
 
-		// setChecked(newChecked);
 		setFilter(newChecked);
 	};
 	const handleExpanded = value => e => {
 		if (!accordion) setAccordion(value);
-		console.log(accordion, value);
+
 		if (accordion === value) setAccordion('');
 	};
 	return (

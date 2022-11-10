@@ -1,4 +1,4 @@
-import { Home } from './pages/Home/Home';
+import { Products } from './pages/Products/Products';
 import { Detail } from './pages/Detail/Detail';
 import { Route } from 'react-router-dom';
 // import Login from './pages/Login/Login';
@@ -10,6 +10,7 @@ import { lazy } from 'react';
 import './App.css';
 import { Private } from './pages/Private/Private';
 import { RoutesWithNotFound } from './Utilities/RoutesWithNotFound';
+import { Home } from './pages/Home/Home';
 import Car from './pages/cars/Car';
 
 const Login = lazy(() => import('./pages/Login/Login'));
@@ -19,9 +20,10 @@ function App() {
 	return (
 		<div className='App'>
 			<RoutesWithNotFound>
-				<Route path='/' element={<Home />} />
+				<Route exact path='/' element={<Home />} />
+				<Route exact path='/products/:product' element={<Products />} />
 				<Route path='/detail/:id' element={<Detail />} />
-				<Route path='/car' element={<Car/>} />
+				<Route path='/car' element={<Car />} />
 				<Route path={PublicRoutes.LOGIN} element={<Login />} />
 				<Route path='/signup' element={<Formreg />} />
 				<Route element={<GuardAuth />}>
@@ -33,4 +35,3 @@ function App() {
 }
 
 export default App;
-			

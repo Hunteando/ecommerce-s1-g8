@@ -1,6 +1,13 @@
 import PropTypes from 'prop-types';
 import style from './AppliedFilters.module.css';
-export function AppliedFilters({ filter, title }) {
+
+export function AppliedFilters({ filter, title, setFilter }) {
+	const handleCleanFilter = e => {
+		const currentIndex = filter.indexOf(e.target.getAttribute('name'));
+		const newFilter = [...filter];
+		newFilter.splice(currentIndex, 1);
+		setFilter(newFilter);
+	};
 	return (
 		<>
 			{filter.length > 0 && (
@@ -11,7 +18,9 @@ export function AppliedFilters({ filter, title }) {
 							<span key={e} className={style.filter}>
 								<span>
 									{e}
-									<b className={style.x}> x </b>
+									<b className={style.x} onClick={handleCleanFilter} name={e}>
+										x
+									</b>
 								</span>
 							</span>
 						))}
@@ -25,4 +34,5 @@ export function AppliedFilters({ filter, title }) {
 AppliedFilters.propTypes = {
 	filter: PropTypes.array,
 	title: PropTypes.string,
+	setFilter: PropTypes.func,
 };

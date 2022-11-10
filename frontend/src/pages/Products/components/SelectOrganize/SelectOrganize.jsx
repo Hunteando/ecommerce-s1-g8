@@ -1,6 +1,6 @@
-import { Button, FormControl, MenuItem, Select } from '@mui/material';
+import { FormControl, MenuItem, Select } from '@mui/material';
 import { useState } from 'react';
-import style from './Search.module.css';
+import style from './SelectOrganze.module.css';
 
 const SelectOrganize = () => {
 	const [value, setValue] = useState('Más Vendidos');
@@ -29,23 +29,21 @@ const SelectOrganize = () => {
 
 	return (
 		<div className={style.menuSelect}>
-			<Button variant='texto' color='secondary' onClick={handleOpen}>
-				Ordenar por :
-			</Button>
-			<FormControl sx={{ minWidth: 200, margin: 0, padding: 0 }}>
+			<label>Sort by :</label>
+			<FormControl sx={{ minWidth: 200 }}>
 				<Select
 					open={open}
 					onClose={handleClose}
 					onOpen={handleOpen}
 					value={value}
 					onChange={handleChange}
+					className={style.select}
 				>
-					<MenuItem value={'Más Vendidos'}>Más Vendidos</MenuItem>
+					<MenuItem value={'Más Vendidos'}>Best sellers</MenuItem>
 					<MenuItem value={'A-Z'}>A-Z</MenuItem>
 					<MenuItem value={'Z-A'}>Z-A</MenuItem>
-					<MenuItem value={'Precios más bajos'}>Precios más bajos</MenuItem>
-					<MenuItem value={'Precios más altos'}>Precios más altos</MenuItem>
-					<MenuItem value={'Mayor Descuento'}>Mayor Descuento</MenuItem>
+					<MenuItem value={'Precios más bajos'}>Lower prices</MenuItem>
+					<MenuItem value={'Precios más altos'}>Higher prices</MenuItem>
 				</Select>
 			</FormControl>
 		</div>

@@ -1,0 +1,22 @@
+.menuSelect {
+	display: none;
+}
+
+@media screen and (min-width: 1200px) {
+	.menuSelect {
+		display: block;
+		display: flex;
+		height: 40px;
+		align-items: center;
+	}
+	.menuSelect label {
+		margin-right: 10px;
+		background-color: #f5f5f5;
+		color: rgb(66, 66, 66);
+	}
+
+	.select {
+		height: 40px;
+		background-color: #fff;
+	}
+}
