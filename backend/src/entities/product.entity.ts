@@ -50,11 +50,17 @@ export class Product extends BaseEntity {
 	})
 	readonly typepro!: Typepro;
 
-	@ManyToMany(() => Tag)
+	@ManyToMany(() => Tag, {
+		eager: true, // Trae explicita la propiedad brand en la consulta
+		cascade: true, // Si no existe el valor en la tabla lo crea
+	})
 	@JoinTable({ name: 'product_tag' })
 	readonly tags!: Tag[];
 
-	@ManyToMany(() => Color)
+	@ManyToMany(() => Color, {
+		eager: true, // Trae explicita la propiedad brand en la consulta
+		cascade: true, // Si no existe el valor en la tabla lo crea
+	})
 	@JoinTable({ name: 'product_color' })
 	readonly colors!: Color[];
 
