@@ -1,0 +1,62 @@
+.item_card {
+	width: 275px;
+	margin-bottom: 1.25rem;
+	height: 500px;
+	border: none;
+	background-color: #fff;
+	border-radius: 10px;
+	text-align: center;
+}
+.item_card .img {
+	width: 275px;
+	height: 275px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+.item_card .name {
+	color: #333333;
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 1rem;
+	padding-left: 20px;
+	margin-top: 20px;
+	margin-bottom: 0;
+	height: 35px;
+	font-weight: bold;
+}
+.item_card .brand {
+	color: #333333;
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 1rem;
+	padding-left: 20px;
+}
+.item_card .price {
+	color: #333333;
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 1rem;
+	padding-left: 20px;
+	font-weight: bold;
+}
+
+.item_card .button {
+	text-align: center;
+	height: 40px;
+}
+.item_card .button button {
+	width: 200px;
+	height: 40px;
+	color: #333333;
+	border: 1px solid rgba(127, 40, 196, 0.5);
+	background-color: #fff;
+	border-radius: 4px;
+	cursor: pointer;
+	opacity: 0.9;
+	transition: opacity 0.4s ease-in-out;
+}
+.item_card .button button:hover {
+	color: #000;
+	opacity: 1;
+	transition: opacity 0.4s ease-in-out;
+}

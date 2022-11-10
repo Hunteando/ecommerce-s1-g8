@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { createProductAdapter } from '../adapters/product.adapter';
 import { getByTypeProducts } from '../Services/public.service';
 
-export function useProducts() {
+export function useProducts(product) {
 	const [products, setProducts] = useState([]);
 	const [loading, setLoading] = useState(false);
 
@@ -10,7 +10,7 @@ export function useProducts() {
 		const getApiproduct = async () => {
 			setLoading(true);
 			try {
-				const result = await getByTypeProducts('Blush');
+				const result = await getByTypeProducts(product);
 				setProducts(createProductAdapter(result));
 				setLoading(false);
 			} catch (error) {
@@ -18,6 +18,6 @@ export function useProducts() {
 			}
 		};
 		getApiproduct();
-	}, []);
+	}, [product]);
 	return { products, loading };
 }
