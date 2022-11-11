@@ -6,24 +6,33 @@ import Formreg from './pages/Formreg/Formreg';
 // import { Dashboard } from './pages/Dashboard/Dashboard';
 import { PrivateRoutes, PublicRoutes } from './Utilities/routes';
 import GuardAuth from './guards/GuardAuth';
-import { lazy } from 'react';
+import { lazy, useState } from 'react';
 import './App.css';
 import { Private } from './pages/Private/Private';
 import { RoutesWithNotFound } from './Utilities/RoutesWithNotFound';
 import { Home } from './pages/Home/Home';
 import Car from './pages/cars/Car';
+import { Header } from './components/Header/Header';
+import { SearchMobile } from './components/SearchMobile/SearchMobile';
 
 const Login = lazy(() => import('./pages/Login/Login'));
 // const Detail = lazy(() => import('./pages/Detail/Detail'));
 
 function App() {
+	const [search, setSearch] = useState(false);
+	const showSearch = () => {
+		setSearch(true);
+	};
+	if (search) return <SearchMobile setSearch={setSearch} />;
 	return (
 		<div className='App'>
+			<Header showSearch={showSearch} search={search} />
+
 			<RoutesWithNotFound>
 				<Route exact path='/' element={<Home />} />
 				<Route exact path='/products/:product' element={<Products />} />
-				<Route path='/detail/:id' element={<Detail />} />
-				<Route path='/car' element={<Car />} />
+				<Route exact path='/detail/:id' element={<Detail />} />
+				<Route exact path='/car' element={<Car />} />
 				<Route path={PublicRoutes.LOGIN} element={<Login />} />
 				<Route path='/signup' element={<Formreg />} />
 				<Route element={<GuardAuth />}>

@@ -1,46 +1,31 @@
-import { Header } from '@/components/Header/Header';
 import { Footer } from '@/components/Footer/Footer';
 import { Counter } from './Components/Counter/Counter';
 import { Color } from './Components/Colors/Color';
-import { Search } from '@/components/search/Search';
 import style from './Detail.module.css';
-import { useState } from 'react';
 
 export function Detail({ image, brand, name, price, description, colors }) {
-	const [search, setSearch] = useState(false);
-	const showSearch = () => {
-		setSearch(true);
-	};
-
 	return (
 		<>
-			{search ? (
-				<Search setSearch={setSearch} />
-			) : (
-				<>
-					<Header showSearch={showSearch} search={search} />
-					<div className={style.container}>
-						<section className={style.container_detail}>
-							<img src={`${image}`} alt='producto' />
-							<article>
-								<h3> {`${brand}`}</h3>
-								<h4>{name}</h4>
-								<p>${`${price === '0.0' ? '55.00' : price}`}</p>
-								<Color colors={colors} />
-								<div>
-									<Counter />
-									<button>comprar</button>
-								</div>
-							</article>
-						</section>
-						<section>
-							<h4>Description: </h4>
-							<p>{description}</p>
-						</section>
-					</div>
-					<Footer />
-				</>
-			)}
+			<div className={style.container}>
+				<section className={style.container_detail}>
+					<img src={`${image}`} alt='producto' />
+					<article>
+						<h3> {`${brand}`}</h3>
+						<h4>{name}</h4>
+						<p>${`${price === '0.0' ? '55.00' : price}`}</p>
+						<Color colors={colors} />
+						<div>
+							<Counter />
+							<button>comprar</button>
+						</div>
+					</article>
+				</section>
+				<section>
+					<h4>Description: </h4>
+					<p>{description}</p>
+				</section>
+			</div>
+			<Footer />
 		</>
 	);
 }

@@ -1,7 +1,7 @@
 import SearchIcon from '@mui/icons-material/Search';
-import style from './Search.module.css';
+import style from './SearchMobile.module.css';
 // eslint-disable-next-line react/prop-types
-export function Search({ setSearch }) {
+export function SearchMobile({ setSearch }) {
 	return (
 		<section className={style.container}>
 			<form>

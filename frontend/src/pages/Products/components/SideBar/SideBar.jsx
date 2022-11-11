@@ -15,11 +15,11 @@ export function SideBar() {
 	return (
 		<section className={style.container}>
 			<button onClick={showOrganize}>
-				<article>ordenar</article>
+				<article>Organize</article>
 				<KeyboardArrowDownOutlinedIcon />
 			</button>
 			<button onClick={showFilter}>
-				<article>filtrar</article>
+				<article>Filter</article>
 				<FilterAltOutlinedIcon />
 			</button>
 		</section>

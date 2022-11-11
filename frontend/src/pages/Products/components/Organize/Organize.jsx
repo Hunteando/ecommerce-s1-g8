@@ -9,7 +9,7 @@ export function Organize() {
 	return (
 		<section className={`${style.container_order} order`}>
 			<FormControl>
-				<FormLabel id='demo-radio-buttons-group-label'>Ordenar por:</FormLabel>
+				<FormLabel id='demo-radio-buttons-group-label'>Sort by:</FormLabel>
 				<RadioGroup
 					aria-labelledby='demo-radio-buttons-group-label'
 					defaultValue='vendidos'
@@ -18,19 +18,19 @@ export function Organize() {
 					<FormControlLabel
 						value='vendidos'
 						control={<Radio />}
-						label='Mas Vendidos'
+						label='Best sellers'
 					/>
 					<FormControlLabel value='a-z' control={<Radio />} label='A-Z' />
 					<FormControlLabel value='z-a' control={<Radio />} label='Z-A' />
 					<FormControlLabel
 						value='preciobajo'
 						control={<Radio />}
-						label='Precio mas Bajo'
+						label='Lower prices'
 					/>
 					<FormControlLabel
 						value='precioalto'
 						control={<Radio />}
-						label='Precio mas Alto'
+						label='Higher prices'
 					/>
 				</RadioGroup>
 			</FormControl>

@@ -1,186 +1,99 @@
-/* .contenedor {
-	position: fixed;
-	top: 0;
-	z-index: 2;
-	width: 100%;
-	left: 0;
-} */
-/* .header {
-	padding: 0 10px;
-	top: 0;
-	z-index: 2;
-	color: var(--second-color);
+.container_header {
+	background-color: #f5f5f5;
+	width: 100vw;
+	position: relative;
+	height: 70px;
+}
+.header {
+	background-color: #f5f5f5;
+	height: inherit;
 	display: flex;
+	max-width: 1200px;
+	margin: 0 auto;
 	justify-content: space-between;
 	align-items: center;
-	height: 70px;
-	margin: 0 auto;
-	width: 100vw;
-	max-width: 1200px;
 }
-.header label {
-	position: relative;
+.container_BtnAmburger {
+	padding-left: 10px;
 }
-.header label input {
-	padding: 10px 20px;
-	width: 100%;
+.container_title {
+	width: 50vw;
+	text-align: center;
+}
+.container_searchMobile {
+	margin: 10px;
+}
+.container_car {
+	margin-right: 15px;
 }
 
-.header .search {
-	position: absolute;
-	right: 2%;
-	transform: translateY(50%);
-	bottom: 50%;
-	cursor: pointer;
-}
-.header .loginCarrito {
-	display: flex;
-	gap: 20px;
-	align-items: center;
-}
-.header article {
+.container_searchDesk {
 	display: none;
-} */
+}
 
-/* @media screen and (min-width: 768px) {
-	.header label {
-		position: relative;
-		width: 50%;
-	}
-	.header .loginCarrito {
-		display: flex;
-		gap: 40px;
-	}
+.container_loginDesk {
+	display: none;
+}
+.container_favorite {
+	display: none;
+}
+.container_xMobile {
+	display: none;
+}
+@media screen and (min-width: 768px) {
 }
 
 @media screen and (min-width: 1200px) {
-	.header .loginCarrito {
+	.container_header {
+		background-color: #f5f5f5;
+		width: 100vw;
+		position: relative;
+		height: 70px;
+	}
+
+	.header {
+		background-color: #f5f5f5;
+		height: inherit;
 		display: flex;
+		max-width: 1200px;
+		margin: 0 auto;
+
+		justify-content: space-between;
 		align-items: center;
 	}
 
-	.header article {
-		display: flex;
-		flex-direction: column;
-	}
-	.header article:hover {
-		background-color: gray;
-		transition: 1s;
-		color: white;
+	.container_title {
+		text-align: left;
+		width: 125px;
 	}
 
-	.header article p {
-		margin: 0;
-		text-align: center;
-	}
-	.header article p:first-child {
-		font-weight: bold;
-		margin-bottom: 5px;
-	}
-} */
-
-.header {
-	position: fixed;
-	top: 0;
-	z-index: 10;
-	width: 100%;
-	color: var(--second-color);
-	display: flex;
-	justify-content: space-between;
-	align-content: center;
-	height: 3.75rem;
-	border-bottom: black solid 1px;
-	background-color: white;
-	width: 100vw;
-}
-
-.header h1 {
-	margin: 0.625rem;
-}
-
-.header div {
-	margin: 0.625rem;
-	background-color: white;
-	color: var(--second-color);
-	width: 8rem;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-right: 1rem;
-	padding-right: 5px;
-}
-
-.header form {
-	display: none;
-}
-.header article {
-	display: none;
-}
-
-@media screen and (min-width: 768px) {
-	.header h1 {
-		margin: 0.625rem;
-	}
-}
-
-@media screen and (min-width: 1200px) {
-	.header {
-		height: 70px;
-		padding: 0 20vw;
-	}
-
-	.header h1 {
-		margin: 0.625rem 1rem;
-	}
-	.header form {
+	.container_searchDesk {
+		width: 600px;
 		display: block;
-		width: 50vw;
-		height: 40px;
-		margin: 10px;
+		margin-right: 20px;
 	}
-	.header input {
-		width: 90%;
-		height: 40px;
-		align-content: center;
-
-		padding: 10px 20px;
-	}
-	.lens {
-		position: relative;
-		left: -2rem;
-		top: 0.5rem;
-		cursor: pointer;
-	}
-
-	.search {
-		display: none !important;
-	}
-	.header div {
-		width: 30vw;
-		height: 100%;
-		margin-top: 0;
-		padding-left: 1rem;
-		padding-right: 1rem;
-	}
-	.header .login {
+	.container_loginDesk {
+		height: inherit;
+		width: 180px;
 		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
-	.header .login .logout {
-		width: 150px;
-		margin-top: 8px;
-		font-weight: bold;
+	.container_car {
 	}
-	.header article {
-		display: flex;
-		flex-direction: column;
+	.container_favorite {
+		display: block;
 	}
-
-	.header article p {
-		margin: 0;
-		text-align: center;
+	.container_BtnAmburger {
+		display: none;
 	}
-	.header article p:first-child {
-		font-weight: bold;
-		margin-bottom: 5px;
+	.container_loginMobile {
+		display: none;
+	}
+	.container_searchMobile {
+		display: none;
+	}
+	.container_xMobile {
+		display: none;
 	}
 }
