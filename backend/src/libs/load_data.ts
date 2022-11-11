@@ -1,6 +1,9 @@
 import axios from 'axios';
-import { CreateProductDto } from '../dto/create-product.dto';
-interface ApiI extends CreateProductDto {
+interface ApiI {
+	name: string;
+	price: number;
+	image_link: string;
+	description: string;
 	brand: number | string;
 	category: number | string;
 	product_colors: ColorObj[];
@@ -8,7 +11,11 @@ interface ApiI extends CreateProductDto {
 	tag_list: string[];
 }
 
-interface ProductSave extends CreateProductDto {
+interface ProductSave {
+	name: string;
+	price: number;
+	image_link: string;
+	description: string;
 	brand: number;
 	category: number;
 	typepro: number;

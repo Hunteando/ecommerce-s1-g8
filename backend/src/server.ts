@@ -8,8 +8,10 @@ import express, {
 	Response,
 } from 'express';
 import morgan from 'morgan';
+import swaggerUi from 'swagger-ui-express';
 import { ZodError } from 'zod';
 import { HTTP_CODE } from './codes';
+import swaggerSetup from './docs/swagger';
 import routes from './routes';
 
 const { PORT } = process.env;
@@ -40,6 +42,7 @@ class Server {
 
 	router() {
 		this.app.use('/api/v1', routes);
+		this.app.use('/api/doc', swaggerUi.serve, swaggerUi.setup(swaggerSetup));
 		this.app.use((_, res) => {
 			res
 				.status(404)
