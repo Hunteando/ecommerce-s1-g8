@@ -1,3 +1,3 @@
-export interface CreateBrandDto {
-	readonly name: string;
+export class CreateBrandDto {
+	readonly name!: string;
 }

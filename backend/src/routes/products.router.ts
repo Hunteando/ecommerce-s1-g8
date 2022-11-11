@@ -7,6 +7,24 @@ import { ProductSchema } from '../schemas/product.schema';
 const router: Router = Router();
 const productCrud = new ProductsCrud();
 
+/**
+ * @openapi
+ * /products:
+ *   post:
+ *     tags:
+ *       - products
+ *     summary: Create Product
+ *     description: Agrega productos a la base de datos.
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/product"
+ *     responses:
+ *       '200':
+ *         description: (ok) Retorna el producto ingresado
+ */
+// TODO: crear dto's para las propiedades faltantes de product
 router.post(
 	'/',
 	schemaValidation(ProductSchema),
@@ -21,6 +39,18 @@ router.post(
 	}
 );
 
+/**
+ * @openapi
+ * /products:
+ *   get:
+ *     tags:
+ *       - products
+ *     summary: Listar productos
+ *     description: Obtiene todos los productos con un paginado de 9 productos por sección.
+ *     responses:
+ *       '200':
+ *         description: Retorna la lista de productos
+ */
 router.get('/', async (req: Request, res: Response, next: NextFunction) => {
 	try {
 		const products = await productCrud.getProducts();
