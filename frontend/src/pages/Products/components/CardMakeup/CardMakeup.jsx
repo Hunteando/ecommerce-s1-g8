@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
 import style from './CardMakeup.module.css';
 import PropTypes from 'prop-types';
+import { Heard } from '@/components/Heard/Heard';
 
 export function CardMakeup({ name, image, price, brand, id }) {
 	return (
 		<div className={style.item_card}>
+			<div className={style.heard}>
+				<Heard />
+			</div>
 			<Link to={`/detail/${id}`}>
 				<img src={`${image}`} className={style.img} />
 				<h4 className={style.name}>{name}</h4>

@@ -1,11 +1,12 @@
-import { useProducts } from '@/hook';
 import { CardMakeup } from '../CardMakeup/CardMakeup';
 import { LoadingCard } from '@/components/LoadingCard/LoadingCard';
 import style from './Cards.module.css';
 import PropTypes from 'prop-types';
+import { useProducts } from '@/hook/useProducts';
+
 export function Cards({ product }) {
-	const { products, loading } = useProducts(product);
 	const cardsLoading = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+	const { products, loading } = useProducts(product);
 
 	if (loading)
 		return (

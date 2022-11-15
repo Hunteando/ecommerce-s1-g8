@@ -1,0 +1,23 @@
+.container {
+	background-color: #f5f5f5;
+}
+.container h3 {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding-top: 2rem;
+	padding-left: 4rem;
+}
+.container_slider {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	height: 550px;
+	overflow-x: hidden;
+	background-color: #f5f5f5;
+}
+.container_cards {
+	height: 500px;
+	margin: 0 4rem;
+}

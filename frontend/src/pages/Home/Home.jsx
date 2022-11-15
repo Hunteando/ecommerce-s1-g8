@@ -1,14 +1,17 @@
-import { Header } from '@/components/Header/Header';
 import { Carrusel } from '@/components/Carrusel/Carrusel';
-import { Menu } from '@/components/Menu/Menu';
+import { SliderCards } from './components/SliderCards/SliderCards';
+import { Footer } from '../../components/Footer/Footer';
+
+import style from './Home.module.css';
 
 export function Home() {
 	const images = ['1.jpg', '2.jpg', '3.jpg'];
+
 	return (
-		<div>
-			<Header />
-			<Menu />
+		<div className={style.conateiner_home}>
 			<Carrusel images={images} autoplay={false} showbuttons={false} />
+			<SliderCards />
+			<Footer />
 		</div>
 	);
 }
