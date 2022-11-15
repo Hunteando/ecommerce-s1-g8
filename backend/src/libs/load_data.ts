@@ -75,7 +75,10 @@ function getRandomInt(min: number, max: number): number {
 // 	}
 // };
 
-async function loadTablesAPI(table: string): Promise<ResObj[] | undefined> {
+async function loadTablesAPI(
+	table: string,
+	quantityProducts: number
+): Promise<ResObj[] | undefined> {
 	let products: ApiI[] = [];
 	let unique: ResObj[] | ColorObj[] | ProductSave[] = [];
 	try {
@@ -109,7 +112,7 @@ async function loadTablesAPI(table: string): Promise<ResObj[] | undefined> {
 				});
 				unique = uniqueArray(arr);
 			} else if (table === 'upload-products') {
-				if (i < 10) {
+				if (i < quantityProducts) {
 					let arrTag: ResObj[] = [];
 					// const arrColor: ColorObj[] = [];
 

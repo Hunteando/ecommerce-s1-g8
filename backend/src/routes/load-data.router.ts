@@ -15,7 +15,11 @@ type BrandObj = {
 
 router.get('/:name', async (req: Request, res: Response) => {
 	const { name } = req.params;
-	const data = (await loadTablesAPI(String(name))) as BrandObj[];
+	const quantityProducts = 10;
+	const data = (await loadTablesAPI(
+		String(name),
+		quantityProducts
+	)) as BrandObj[];
 	let table = null;
 	if (name === 'brand') table = Brand;
 	else if (name === 'category') table = Category;
