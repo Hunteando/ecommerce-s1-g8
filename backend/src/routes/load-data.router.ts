@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { Request, Response, Router } from 'express';
 import { EntityTarget, Table } from 'typeorm';
 import { AppDataSource } from '../db';
@@ -8,6 +9,8 @@ import { Product } from '../entities/product.entity';
 import { Typepro } from '../entities/Typepro.entity';
 import { loadTablesAPI } from '../libs/load_data';
 
+const { QUANTITY } = process.env;
+
 const router: Router = Router();
 type BrandObj = {
 	name: string;
@@ -15,10 +18,10 @@ type BrandObj = {
 
 router.get('/:name', async (req: Request, res: Response) => {
 	const { name } = req.params;
-	const quantityProducts = 10;
+	const quantityProducts = QUANTITY || 30;
 	const data = (await loadTablesAPI(
 		String(name),
-		quantityProducts
+		+quantityProducts
 	)) as BrandObj[];
 	let table = null;
 	if (name === 'brand') table = Brand;
