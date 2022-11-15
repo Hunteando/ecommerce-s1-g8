@@ -55,7 +55,11 @@ router.post(
  */
 router.get('/', async (req: Request, res: Response, next: NextFunction) => {
 	try {
-		const products = await productCrud.getProducts();
+		const { page_size, page } = req.query;
+		const ps = page_size || 9;
+		const p = page || 0;
+
+		const products = await productCrud.getProducts(Number(ps), Number(p));
 		res.json({ data: products });
 	} catch (err) {
 		next(err);
