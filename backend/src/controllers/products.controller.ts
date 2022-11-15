@@ -4,8 +4,20 @@ import { UpdateProductDto } from '../dto/product/update-product.dto';
 import { Product } from '../entities/product.entity';
 
 export class ProductsCrud {
-	async getProducts(): Promise<UpdateProductDto[]> {
-		const products = await Product.find();
+	async getProducts(
+		page_size: number,
+		page: number
+	): Promise<UpdateProductDto[]> {
+		if (isNaN(page_size) || isNaN(page))
+			throw new Error('Paging queries must be numeric');
+		const skip = page * page_size;
+		const products = await Product.find({
+			take: page_size,
+			order: {
+				created_at: 'DESC',
+			},
+			skip,
+		});
 		if (!Object.entries(products).length)
 			throw new Error(
 				`Products are not avalible | code: ${HTTP_CODE.NOT_FOUND}`
