@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon src/index.ts",
     "start": "node src/index.js",
-    "build": "tsc",
+    "build": "npx tsc",
     "format": "prettier --write .",
     "lint": "eslint --fix . --ext .ts"
   },
