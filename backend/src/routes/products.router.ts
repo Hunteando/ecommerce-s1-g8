@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response, Router } from 'express';
 import { ProductsCrud } from '../controllers/products.controller';
-import { CreateProductDto } from '../dto/create-product.dto';
+import { CreateProductDto } from '../dto/product/create-product.dto';
 import { schemaValidation } from '../middlewares/schemaValidation.middleware';
 import { ProductSchema } from '../schemas/product.schema';
 
@@ -50,6 +50,8 @@ router.post(
  *     responses:
  *       '200':
  *         description: Retorna la lista de productos
+ *       '500':
+ *         description: Posiblemente no haya registros en la base de datos
  */
 router.get('/', async (req: Request, res: Response, next: NextFunction) => {
 	try {

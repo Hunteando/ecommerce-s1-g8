@@ -1,9 +1,10 @@
 import { HTTP_CODE } from '../codes';
-import { CreateProductDto } from '../dto/create-product.dto';
+import { CreateProductDto } from '../dto/product/create-product.dto';
+import { UpdateProductDto } from '../dto/product/update-product.dto';
 import { Product } from '../entities/product.entity';
 
 export class ProductsCrud {
-	async getProducts() {
+	async getProducts(): Promise<UpdateProductDto[]> {
 		const products = await Product.find();
 		if (!Object.entries(products).length)
 			throw new Error(
@@ -12,7 +13,7 @@ export class ProductsCrud {
 		return products;
 	}
 
-	async getProduct(id: number) {
+	async getProduct(id: number): Promise<UpdateProductDto> {
 		const product = await Product.findOneBy({ id });
 		if (!product)
 			throw new Error(`Product not found | code: ${HTTP_CODE.NOT_FOUND}`);
