@@ -6,6 +6,14 @@
 	background-color: #fff;
 	border-radius: 10px;
 	text-align: center;
+	position: relative;
+}
+.item_card .heard {
+	border-radius: 20px;
+	background-color: transparent;
+	position: absolute;
+	right: 5px;
+	top: 5px;
 }
 .item_card .img {
 	width: 275px;

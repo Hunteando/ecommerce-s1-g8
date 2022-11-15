@@ -1,0 +1,26 @@
+.containerBtnLogin {
+	width: 180px;
+	height: 60px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.BtnLogin {
+	width: 120px;
+	height: inherit;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	color: purple;
+	border: none;
+	background-color: transparent;
+	font-size: 25px;
+	cursor: pointer;
+	transition: 1s ease-in-out;
+}
+.BtnLogin:hover {
+	background-color: rgba(127, 40, 196, 0.5);
+	color: black;
+	border-radius: 5px;
+}
