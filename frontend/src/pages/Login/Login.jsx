@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Style from './Login.module.css';
 import { Footer } from '../../components/Footer/Footer';
-import { Header } from '../../components/Header/Header';
+
 import { useValidation } from '../../hook/useValidation';
 import { useState } from 'react';
 // Inicializando formulario

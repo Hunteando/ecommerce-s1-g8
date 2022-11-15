@@ -2,12 +2,32 @@
 	background-color: white;
 	position: fixed;
 	bottom: 0;
-	z-index: 900;
+	z-index: 50;
 	width: 100%;
-	height: 40%;
+	height: 100%;
 	transform: translate(0, 100%);
 	transition: transform 0.3s ease;
+}
+.container_order button {
+	display: block;
+	width: 100vw;
+	height: 50px;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	bottom: 0;
+	background-color: #fff;
+	color: black;
+	font-size: large;
+	font-weight: bold;
+}
+.container {
+	height: 45%;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 	border-top: solid 5px black;
+	left: 0;
 	padding: 0.5rem 1rem;
 }
 

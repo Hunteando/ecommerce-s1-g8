@@ -1,6 +1,6 @@
 import SearchIcon from '@mui/icons-material/Search';
 import style from './SearchMobile.module.css';
-// eslint-disable-next-line react/prop-types
+import PropTypes from 'prop-types';
 export function SearchMobile({ setSearch }) {
 	return (
 		<section className={style.container}>
@@ -18,3 +18,6 @@ export function SearchMobile({ setSearch }) {
 		</section>
 	);
 }
+SearchMobile.propTypes = {
+	setSearch: PropTypes.func,
+};

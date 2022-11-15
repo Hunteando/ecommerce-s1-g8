@@ -1,5 +1,7 @@
 import { Carrusel } from '@/components/Carrusel/Carrusel';
-import { Menu } from '@/components/Menu/Menu';
+import { SliderCards } from './components/SliderCards/SliderCards';
+import { Footer } from '../../components/Footer/Footer';
+
 import style from './Home.module.css';
 
 export function Home() {
@@ -7,8 +9,9 @@ export function Home() {
 
 	return (
 		<div className={style.conateiner_home}>
-			<Menu />
 			<Carrusel images={images} autoplay={false} showbuttons={false} />
+			<SliderCards />
+			<Footer />
 		</div>
 	);
 }

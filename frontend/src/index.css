@@ -33,7 +33,7 @@ img {
 .is-active-filter {
 	transform: translate(0, 0);
 }
-.is-active-menu {
+.is-hide-menu {
 	display: none;
 }
 
@@ -43,8 +43,11 @@ a:active {
 	text-decoration: none;
 	color: black;
 }
+.active-nav {
+	color: red;
+}
 @media screen and (min-width: 1200px) {
-	.is-active-menu {
+	.is-hide-menu {
 		display: block;
 	}
 }

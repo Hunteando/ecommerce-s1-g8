@@ -6,9 +6,9 @@ export function SearchDesk() {
 	const Search = styled('div')(({ theme }) => ({
 		position: 'relative',
 		borderRadius: theme.shape.borderRadius,
-		backgroundColor: alpha(theme.palette.common.white, 0.15),
+		backgroundColor: alpha(theme.palette.common.white, 0.5),
 		'&:hover': {
-			backgroundColor: alpha(theme.palette.common.white, 0.25),
+			backgroundColor: alpha(theme.palette.common.white, 1),
 		},
 		marginLeft: 0,
 		width: '100%',
@@ -25,6 +25,7 @@ export function SearchDesk() {
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
+		color: 'black',
 	}));
 
 	const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -36,13 +37,14 @@ export function SearchDesk() {
 			transition: theme.transitions.create('width'),
 			width: '100%',
 			[theme.breakpoints.up('sm')]: {
-				width: '12ch',
+				width: '30rem',
 				'&:focus': {
-					width: '20ch',
+					width: '30rem',
 				},
 			},
 		},
 	}));
+
 	return (
 		<div>
 			<Search>

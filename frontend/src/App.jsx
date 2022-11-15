@@ -14,7 +14,7 @@ import { Home } from './pages/Home/Home';
 import Car from './pages/cars/Car';
 import { Header } from './components/Header/Header';
 import { SearchMobile } from './components/SearchMobile/SearchMobile';
-
+import { Menu } from './components/Menu/Menu';
 const Login = lazy(() => import('./pages/Login/Login'));
 // const Detail = lazy(() => import('./pages/Detail/Detail'));
 
@@ -27,7 +27,7 @@ function App() {
 	return (
 		<div className='App'>
 			<Header showSearch={showSearch} search={search} />
-
+			<Menu />
 			<RoutesWithNotFound>
 				<Route exact path='/' element={<Home />} />
 				<Route exact path='/products/:product' element={<Products />} />
