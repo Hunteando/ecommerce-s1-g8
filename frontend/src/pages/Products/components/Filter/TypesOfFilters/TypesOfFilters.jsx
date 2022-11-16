@@ -23,7 +23,7 @@ export function TypesOfFilters({
 
 	useEffect(() => {
 		setTable(filterList);
-	}, []);
+	}, [filterList]);
 
 	const handleToggle = value => () => {
 		const currentIndex = checked.indexOf(value);
