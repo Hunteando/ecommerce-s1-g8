@@ -24,7 +24,7 @@ export function Products() {
 				</div>
 				<section className={style.container_filter_and_card}>
 					<article>
-						<Filter />
+						<Filter product={product} />
 					</article>
 					<article>
 						<Cards product={product} />

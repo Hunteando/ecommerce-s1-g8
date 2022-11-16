@@ -1,14 +1,15 @@
 import { TypesOfFilters } from './TypesOfFilters/TypesOfFilters';
 import style from './Filter.module.css';
-import { makeup } from '@/Utilities';
-import { useState } from 'react';
+import { makeupFitler } from '../../../../Utilities/index';
+import { useEffect, useState } from 'react';
 import { AppliedFilters } from './AppliedFilters/AppliedFilters';
+import PropTypes from 'prop-types';
 
-export function Filter() {
-	const [tags, setTags] = useState([]);
-	const [brands, setBrands] = useState([]);
-	const [products, setProducts] = useState([]);
-	const [category, setCategory] = useState([]);
+export function Filter({ product }) {
+	const [leakedTags, setLeakedTags] = useState([]);
+	const [leakedCategory, setLeakedCategory] = useState([]);
+	const [filterListTag, setFilterListTag] = useState([]);
+	const [filterListCategory, setFilterListCategory] = useState([]);
 	const [accordion, setAccordion] = useState('');
 
 	const showFilter = () => {
@@ -17,82 +18,65 @@ export function Filter() {
 	};
 
 	const handlerClearfilter = () => {
-		setTags([]);
-		setBrands([]);
-		setCategory([]);
-		setProducts([]);
+		setLeakedTags([]);
+
+		setLeakedCategory([]);
 	};
+
+	useEffect(() => {
+		console.log(product);
+
+		// segun el tipo de producto vamos a buscar las tag lis y las categorias
+		const tags = makeupFitler[product].tag;
+		console.log(tags);
+		setFilterListTag(tags);
+		const categorys = makeupFitler[product].category;
+		console.log(categorys);
+		setFilterListCategory(categorys);
+	}, [product]);
 
 	return (
 		<section className={`${style.container_filter} filter`}>
 			<button onClick={showFilter}> &lt; Filters</button>
-			{(tags.length > 0 ||
-				brands.length > 0 ||
-				products.length > 0 ||
-				category.length > 0) && (
+			{(leakedTags.length > 0 || leakedCategory.length > 0) && (
 				<>
 					<article>
 						<h3 onClick={handlerClearfilter}>Clear filter</h3>
 						<AppliedFilters
-							filter={tags}
+							filter={leakedTags}
 							title={'Tags List'}
-							setFilter={setTags}
+							setFilter={setLeakedTags}
 						/>
 						<AppliedFilters
-							filter={brands}
-							title={'Brands List'}
-							setFilter={setBrands}
-						/>
-						<AppliedFilters
-							filter={products}
-							title={'Product Types'}
-							setFilter={setProducts}
-						/>
-						<AppliedFilters
-							filter={category}
+							filter={leakedCategory}
 							title={'Category'}
-							setFilter={setCategory}
+							setFilter={setLeakedCategory}
 						/>
 					</article>
 				</>
 			)}
 
 			<TypesOfFilters
-				filterList={makeup.tagslist}
+				filterList={filterListTag}
 				typeFilter={'Tags List'}
-				setFilter={setTags}
+				setFilter={setLeakedTags}
 				disable={accordion !== 'Tags List' && accordion !== '' && true}
 				setAccordion={setAccordion}
 				accordion={accordion}
-				checked={tags}
+				checked={leakedTags}
 			/>
 			<TypesOfFilters
-				filterList={makeup.brandsList}
-				typeFilter={'Brands List'}
-				setFilter={setBrands}
-				disable={accordion !== 'Brands List' && accordion !== '' && true}
-				setAccordion={setAccordion}
-				accordion={accordion}
-				checked={brands}
-			/>
-			<TypesOfFilters
-				filterList={makeup.productTypes}
-				typeFilter={'Product Types'}
-				setFilter={setProducts}
-				disable={accordion !== 'Product Types' && accordion !== '' && true}
-				setAccordion={setAccordion}
-				accordion={accordion}
-				checked={products}
-			/>
-			<TypesOfFilters
-				filterList={makeup.category}
+				filterList={filterListCategory}
 				typeFilter={'Category'}
-				setFilter={setCategory}
+				setFilter={setLeakedCategory}
 				disable={accordion !== 'Category' && accordion !== '' && true}
 				setAccordion={setAccordion}
 				accordion={accordion}
-				checked={category}
+				checked={leakedCategory}
 			/>
 		</section>
 	);
 }
+Filter.propTypes = {
+	product: PropTypes.string,
+};

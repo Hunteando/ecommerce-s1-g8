@@ -34,7 +34,7 @@ export function Carrusel(props) {
 		if (props.autoplay || !props.showbuttons) {
 			const interval = setInterval(() => {
 				selectnewImage(selectedIndex, props.images);
-			}, 2000);
+			}, 6000);
 			return () => {
 				clearInterval(interval);
 			};
