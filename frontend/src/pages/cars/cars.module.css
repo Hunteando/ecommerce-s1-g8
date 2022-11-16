@@ -1,4 +1,49 @@
-.car{
-    margin-top: 70px;
-    height: 450px;
+.car {
+	margin: 70px 0;
+}
+
+.row {
+	border-bottom: none !important;
+}
+.table {
+	border: 1px solid #010101;
+	padding: 20px;
+	border-radius: 8px;
+}
+.cupon {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	font-size: 12px;
+	gap: 30px;
+}
+.btn {
+	background-color: #7f28c4;
+	width: 100%;
+	padding: 17px;
+	margin: 20px 0;
+	color: #ffffff;
+	border: none;
+	cursor: pointer;
+}
+.total {
+	font-size: 25px;
+	font-weight: lighter;
+}
+.compra {
+	color: #7f28c4;
+}
+.cantidad {
+	display: flex;
+	align-items: center;
+	border: 1px solid #01010120;
+	justify-content: space-around;
+	padding: 5px 0;
+	font-size: 20px;
+	border-radius: 5px;
+}
+.add:hover {
+	background-color: #01010120;
+	color: #ffffff;
+	cursor: pointer;
 }
