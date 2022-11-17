@@ -7,7 +7,7 @@ import { useProducts } from '@/hook/useProducts';
 export function Cards({ product }) {
 	const cardsLoading = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 	const { products, loading } = useProducts(product);
-
+console.log("este es carda")
 	if (loading)
 		return (
 			<section className={style.container_cards_loading}>
@@ -29,6 +29,7 @@ export function Cards({ product }) {
 						image={e.image}
 						price={e.price}
 						brand={e.brand}
+						productType={e.productType}
 					/>
 				</div>
 			))}

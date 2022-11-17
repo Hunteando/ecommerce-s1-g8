@@ -2,8 +2,18 @@ import { Link } from 'react-router-dom';
 import style from './CardMakeup.module.css';
 import PropTypes from 'prop-types';
 import { Heard } from '@/components/Heard/Heard';
+/* redux Isra */
+import { useDispatch } from 'react-redux';
+import { getCarAdd } from '../../../../redux/store/states/thunks';
 
 export function CardMakeup({ name, image, price, brand, id }) {
+	/* uso de redux Isra - Inicio */
+	const dispatch = useDispatch();
+	const add = id => {
+		dispatch(getCarAdd(id));
+	};
+	/* uso de redux Isra - Final */
+
 	return (
 		<div className={style.item_card}>
 			<div className={style.heard}>
@@ -16,7 +26,8 @@ export function CardMakeup({ name, image, price, brand, id }) {
 			<p className={style.brand}>Brand: {`${brand}`}</p>
 			<p className={style.price}>$ {`${price === '0.0' ? '55.00' : price}`}</p>
 			<div className={style.button}>
-				<button>comprar</button>
+				{/* aumente onclick para capturar el producto de isra  */}
+				<button onClick={() => add(id)}>comprar</button>
 			</div>
 		</div>
 	);
