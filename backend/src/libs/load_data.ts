@@ -45,11 +45,12 @@ type ColorObj = {
 const uniqueArray = (arr: ResObj[] | ColorObj[]) =>
 	[...new Set(arr.map(o => JSON.stringify(o)))].map(s => JSON.parse(s));
 
-const getDataApi = async (): Promise<ApiI[] | undefined> => {
+const getDataApi = async (pType?: string): Promise<ApiI[] | undefined> => {
 	try {
-		const { data } = await axios.get(
-			`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=blush`
-		);
+		const url = !pType
+			? 'http://makeup-api.herokuapp.com/api/v1/products.json'
+			: `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${pType}`;
+		const { data } = await axios.get(url);
 		return data;
 	} catch (err) {
 		if (axios.isAxiosError(err)) {
@@ -71,7 +72,6 @@ async function downloadComplementsProducts(
 	let unique: ResObj[] | ColorObj[] | ProductSave[] = [];
 	try {
 		products = (await getDataApi()) as ApiI[];
-		// TODO: Cargar el primer valor de Array arr con un {name: 'null'}
 		const arr: ResObj[] = [];
 		products.forEach(async product => {
 			// if (i < 50)
@@ -131,8 +131,8 @@ async function getComplementsProducts(
 	return id;
 }
 
-async function productConstructor() {
-	const products = (await getDataApi()) as ApiI[];
+async function productConstructor(complement: string) {
+	const products = (await getDataApi(complement)) as ApiI[];
 	const arrProduct: ProductSave[] = [];
 	const quantity = QUANTITY || 10;
 	for (let i = 0; i < products.length; i++) {
@@ -161,7 +161,6 @@ async function productConstructor() {
 		} else break;
 	}
 
-	await uploadDataToTable('products', arrProduct);
 	return arrProduct;
 }
 
@@ -180,20 +179,42 @@ async function uploadDataToTable(name: string, data: ProductSave[] | ResObj[]) {
 		.execute();
 }
 
+async function joindProductsByProductType() {
+	const products = [];
+	const complements = [
+		'lip_liner',
+		'lipstick',
+		'foundation',
+		'eyeliner',
+		'eyeshadow',
+		'blush',
+		'bronzer',
+		'mascara',
+		'eyebrow',
+		'nail_polish',
+	];
+
+	for (const complement of complements) {
+		products.push(...(await productConstructor(complement)));
+	}
+	await uploadDataToTable('products', products);
+	return products;
+}
+
 async function uploadDataToTableAndGetProduct() {
 	// Descomentar todo cuando la base de datos esté vacía
 
-	// const brand = await downloadComplementsProducts('brand');
-	// await uploadDataToTable('brand', brand as ResObj[]);
-	// const category = await downloadComplementsProducts('category');
-	// await uploadDataToTable('category', category as ResObj[]);
-	// const typepro = await downloadComplementsProducts('typepro');
-	// await uploadDataToTable('typepro', typepro as ResObj[]);
+	const brand = await downloadComplementsProducts('brand');
+	await uploadDataToTable('brand', brand as ResObj[]);
+	const category = await downloadComplementsProducts('category');
+	await uploadDataToTable('category', category as ResObj[]);
+	const typepro = await downloadComplementsProducts('typepro');
+	await uploadDataToTable('typepro', typepro as ResObj[]);
 
 	// Esta función solo se debe utilizar siempre y cuando estén
 	// cargados en la base de datos los complementos como: brand, category, typepro
 
-	const res = await productConstructor();
+	const res = await joindProductsByProductType();
 	return res;
 }
 
