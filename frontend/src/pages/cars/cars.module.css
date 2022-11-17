@@ -1,21 +1,33 @@
+/*estilos de car-inicio*/
 .car {
 	margin: 70px 0;
 }
-
-.row {
-	border-bottom: none !important;
+.carVacio {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
+
+.carVacio img {
+	margin: 20px 0;
+}
+.carVacio a {
+	color: #ffff !important;
+	box-shadow: 4px 3px 8px #01010190;
+	padding: 10px 30px;
+	background-color: #7f28c4;
+	border-radius: 8px;
+	position: relative;
+}
+.carVacio a:hover {
+	transform: scale(1.1);
+	transition: all 0.5s;
+}
+
 .table {
 	border: 1px solid #010101;
 	padding: 20px;
 	border-radius: 8px;
-}
-.cupon {
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	font-size: 12px;
-	gap: 30px;
 }
 .btn {
 	background-color: #7f28c4;
@@ -25,10 +37,6 @@
 	color: #ffffff;
 	border: none;
 	cursor: pointer;
-}
-.total {
-	font-size: 25px;
-	font-weight: lighter;
 }
 .compra {
 	color: #7f28c4;
@@ -47,3 +55,32 @@
 	color: #ffffff;
 	cursor: pointer;
 }
+/*estilos de car-final*/
+/*estilos de Detail-inicio*/
+.detailCel {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+.img {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+}
+/*estilos de Detail-final*/
+/*estilos de Ticket-inicio*/
+.row {
+	border-bottom: none !important;
+}
+.cupon {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	font-size: 12px;
+	gap: 30px;
+}
+.total {
+	font-size: 25px;
+	font-weight: lighter;
+}
+/*estilos de Ticket-final*/

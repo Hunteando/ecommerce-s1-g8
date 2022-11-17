@@ -15,6 +15,7 @@ export function useProducts(product) {
 				const result = await getByTypeProducts(product, signal);
 				setProducts(createProductAdapter(result));
 				setLoading(false);
+				
 			} catch (error) {
 				console.log(error.message);
 			}
