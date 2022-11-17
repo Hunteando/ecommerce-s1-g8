@@ -20,7 +20,7 @@ export class Product extends BaseEntity {
 	@PrimaryGeneratedColumn()
 	readonly id!: number;
 
-	@Column({ type: 'varchar', length: 150, unique: true })
+	@Column({ type: 'varchar', length: 150 })
 	readonly name!: string;
 
 	@Column({ type: 'float' })
