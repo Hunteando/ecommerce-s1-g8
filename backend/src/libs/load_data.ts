@@ -1,13 +1,22 @@
 import axios from 'axios';
+import 'dotenv/config';
+import { EntityTarget, Table } from 'typeorm';
+import { AppDataSource } from '../db';
+import { Brand } from '../entities/brand.entity';
+import { Category } from '../entities/category.entity';
+import { Color } from '../entities/color.entity';
+import { Product } from '../entities/product.entity';
+import { Typepro } from '../entities/Typepro.entity';
+const { QUANTITY } = process.env;
 interface ApiI {
 	name: string;
 	price: number;
 	image_link: string;
 	description: string;
-	brand: number | string;
-	category: number | string;
+	brand: string;
+	category: string;
 	product_colors: ColorObj[];
-	product_type: number | string;
+	product_type: string;
 	tag_list: string[];
 }
 
@@ -16,9 +25,9 @@ interface ProductSave {
 	price: number;
 	image_link: string;
 	description: string;
-	brand: number;
-	category: number;
-	typepro: number;
+	brand: number | null;
+	category: number | null;
+	typepro: number | null;
 	tags: ResObj[];
 	colors: ColorObj[];
 }
@@ -39,7 +48,7 @@ const uniqueArray = (arr: ResObj[] | ColorObj[]) =>
 const getDataApi = async (): Promise<ApiI[] | undefined> => {
 	try {
 		const { data } = await axios.get(
-			`http://makeup-api.herokuapp.com/api/v1/products.json`
+			`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=blush`
 		);
 		return data;
 	} catch (err) {
@@ -51,42 +60,20 @@ const getDataApi = async (): Promise<ApiI[] | undefined> => {
 	}
 };
 
-function getRandomInt(min: number, max: number): number {
-	return Math.trunc(Math.random() * (max - min) + min);
-}
+// function getRandomInt(min: number, max: number): number {
+// 	return Math.trunc(Math.random() * (max - min) + min);
+// }
 
-// const queryProperties = async (table: string, name: string) => {
-// 	try {
-// 		let res: ResObj | null = null;
-// 		if (table === 'brand') {
-// 			res = await Brand.findOneBy({ name: name });
-// 			if (!res) return 1;
-// 		} else if (table === 'category') {
-// 			res = await Category.findOneBy({ name: name });
-// 			if (!res) return 1;
-// 		} else if (table === 'typepro') {
-// 			res = await Typepro.findOneBy({ name: name });
-// 			if (!res) return 1;
-// 		}
-
-// 		return res?.id;
-// 	} catch (err) {
-// 		console.log('Error queryProperties ->', err);
-// 	}
-// };
-
-async function loadTablesAPI(
-	table: string,
-	quantityProducts: number
+async function downloadComplementsProducts(
+	table: string
 ): Promise<ResObj[] | undefined> {
 	let products: ApiI[] = [];
 	let unique: ResObj[] | ColorObj[] | ProductSave[] = [];
 	try {
 		products = (await getDataApi()) as ApiI[];
+		// TODO: Cargar el primer valor de Array arr con un {name: 'null'}
 		const arr: ResObj[] = [];
-		const arrColor: ColorObj[] = [];
-		const arrProduct: ProductSave[] = [];
-		products.forEach(async (product, i) => {
+		products.forEach(async product => {
 			// if (i < 50)
 			if (table === 'brand') {
 				arr.push({
@@ -98,54 +85,116 @@ async function loadTablesAPI(
 					name: (product.category as string) || table + ' New',
 				});
 				unique = uniqueArray(arr);
-			} else if (table === 'color') {
-				product.product_colors.forEach(color =>
-					arrColor.push({
-						hex_value: color.hex_value || '#A15638',
-						colour_name: color.colour_name || 'Nude',
-					})
-				);
-				unique = uniqueArray(arrColor);
 			} else if (table === 'typepro') {
 				arr.push({
 					name: (product.product_type as string) || table + ' New',
 				});
 				unique = uniqueArray(arr);
-			} else if (table === 'upload-products') {
-				if (i < quantityProducts) {
-					let arrTag: ResObj[] = [];
-					// const arrColor: ColorObj[] = [];
-
-					// const b = await queryProperties('brand', product.brand as string);
-
-					// const c = await queryProperties('category', product.category as string);
-					// const p = await queryProperties('typepro', product.product_type as string);
-
-					arrTag = product.tag_list.map(tag => ({ name: tag }));
-
-					const productoObj: ProductSave = {
-						name: product.name,
-						price: product.price || 50.0,
-						image_link: product.image_link,
-						description: product.description,
-						tags: arrTag,
-						brand: getRandomInt(1, 58),
-						category: getRandomInt(1, 15),
-						typepro: getRandomInt(1, 10),
-						colors: product.product_colors,
-					};
-					arrProduct.push(productoObj);
-				}
-				unique = arrProduct;
 			}
-
 			// else return;
 		});
 
-		return (unique as ResObj[]) || arrProduct;
+		return unique as ResObj[];
 	} catch (error) {
 		console.log('Error loading data ->', error);
 	}
 }
 
-export { loadTablesAPI };
+async function getComplementsProducts(
+	entity: string,
+	name: string
+): Promise<number | null> {
+	let id = null;
+	if (entity === 'brand') {
+		const complements = await Brand.findOne({
+			where: { name },
+			select: { id: true },
+		});
+		if (!complements) return null;
+		id = complements.id;
+	} else if (entity === 'category') {
+		const complements = await Category.findOne({
+			where: { name },
+			select: { id: true },
+		});
+		if (!complements) return null;
+		id = complements.id;
+	} else if (entity === 'typepro') {
+		const complements = await Typepro.findOne({
+			where: { name },
+			select: { id: true },
+		});
+		if (!complements) return null;
+		id = complements.id;
+	}
+
+	return id;
+}
+
+async function productConstructor() {
+	const products = (await getDataApi()) as ApiI[];
+	const arrProduct: ProductSave[] = [];
+	const quantity = QUANTITY || 10;
+	for (let i = 0; i < products.length; i++) {
+		if (i <= +quantity - 1) {
+			const productoObj: ProductSave = {
+				name: products[i].name,
+				price: products[i].price > 0 ? products[i].price : 8.5,
+				image_link: products[i].image_link,
+				description:
+					products[i].description.length > 0
+						? products[i].description
+						: 'This is a description',
+				tags: products[i].tag_list.map(tag => ({ name: tag })),
+				brand: await getComplementsProducts('brand', products[i].brand),
+				category: await getComplementsProducts(
+					'category',
+					products[i].category
+				),
+				typepro: await getComplementsProducts(
+					'typepro',
+					products[i].product_type
+				),
+				colors: products[i].product_colors,
+			};
+			arrProduct.push(productoObj);
+		} else break;
+	}
+
+	await uploadDataToTable('products', arrProduct);
+	return arrProduct;
+}
+
+async function uploadDataToTable(name: string, data: ProductSave[] | ResObj[]) {
+	let table = null;
+	if (name === 'brand') table = Brand;
+	else if (name === 'category') table = Category;
+	else if (name === 'color') table = Color;
+	else if (name === 'typepro') table = Typepro;
+	else if (name === 'products') table = Product;
+
+	return await AppDataSource.createQueryBuilder()
+		.insert()
+		.into(table as EntityTarget<Table>)
+		.values(data)
+		.execute();
+}
+
+async function uploadDataToTableAndGetProduct() {
+	// Descomentar todo cuando la base de datos esté vacía
+
+	// const brand = await downloadComplementsProducts('brand');
+	// await uploadDataToTable('brand', brand as ResObj[]);
+	// const category = await downloadComplementsProducts('category');
+	// await uploadDataToTable('category', category as ResObj[]);
+	// const typepro = await downloadComplementsProducts('typepro');
+	// await uploadDataToTable('typepro', typepro as ResObj[]);
+
+	// Esta función solo se debe utilizar siempre y cuando estén
+	// cargados en la base de datos los complementos como: brand, category, typepro
+
+	const res = await productConstructor();
+	return res;
+}
+
+export { uploadDataToTableAndGetProduct };
