@@ -9,6 +9,7 @@ export function Menu() {
 			$menu.classList.add('is-hide-menu');
 		}
 	};
+
 	const handleMenu = () => {
 		const $menu = document.querySelector('#menu');
 
