@@ -22,6 +22,10 @@ const swaggerDefinition: OAS3Definition = {
 			url: 'http://localhost:3000/api/v1/',
 			description: 'Development server',
 		},
+		{
+			url: 'https://e-commerce-makeup.onrender.com/api/v1/',
+			description: 'Production server',
+		},
 	],
 
 	components: {
@@ -62,11 +66,14 @@ const swaggerDefinition: OAS3Definition = {
 						type: 'number',
 					},
 					tags: {
-						type: 'object',
-						required: ['name'],
-						properties: {
-							name: {
-								type: 'string',
+						type: 'array',
+						items: {
+							type: 'object',
+							required: ['name'],
+							properties: {
+								name: {
+									type: 'string',
+								},
 							},
 						},
 					},
