@@ -1,16 +1,19 @@
 import { TypesOfFilters } from './TypesOfFilters/TypesOfFilters';
 import style from './Filter.module.css';
 import { makeupFitler } from '../../../../Utilities/index';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { AppliedFilters } from './AppliedFilters/AppliedFilters';
-import PropTypes from 'prop-types';
 
-export function Filter({ product }) {
+import { DataContex } from '../../Context/ProductsProvider';
+
+export function Filter() {
 	const [leakedTags, setLeakedTags] = useState([]);
 	const [leakedCategory, setLeakedCategory] = useState([]);
 	const [filterListTag, setFilterListTag] = useState([]);
 	const [filterListCategory, setFilterListCategory] = useState([]);
 	const [accordion, setAccordion] = useState('');
+
+	const { product } = useContext(DataContex);
 
 	const showFilter = () => {
 		const filter = document.querySelector('.filter');
@@ -75,6 +78,3 @@ export function Filter({ product }) {
 		</section>
 	);
 }
-Filter.propTypes = {
-	product: PropTypes.string,
-};

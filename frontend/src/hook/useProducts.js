@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { createProductAdapter } from '../adapters/product.adapter';
+import { createProductsAdapter } from '../adapters/products.adapter';
 import { getByTypeProducts } from '../Services/public.service';
 
 export function useProducts(product) {
 	const [products, setProducts] = useState([]);
 	const [loading, setLoading] = useState(false);
+	const [copia, setCopia] = useState([]);
 
 	useEffect(() => {
 		const abortController = new AbortController();
@@ -13,9 +14,9 @@ export function useProducts(product) {
 			setLoading(true);
 			try {
 				const result = await getByTypeProducts(product, signal);
-				setProducts(createProductAdapter(result));
+				setProducts(createProductsAdapter(result));
+				setCopia(createProductsAdapter(result));
 				setLoading(false);
-				
 			} catch (error) {
 				console.log(error.message);
 			}
@@ -25,5 +26,5 @@ export function useProducts(product) {
 			abortController.abort();
 		};
 	}, [product]);
-	return { products, loading };
+	return { products, loading, setProducts, copia };
 }
