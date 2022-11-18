@@ -1,13 +1,31 @@
 export const createProductAdapter = product => {
-	const formattedProduct = product.map(e => ({
-		id: e.id,
-		name: e.name,
-		image: e.api_featured_image,
-		price: e.price,
-		brand: e.brand,
-		rating: e.rating,
-		productType: e.productType,
-		tagList: e.tag_list,
-	}));
+	const priceFormatter = price => {
+		if (price === '0.0') {
+			price = '35.00';
+		}
+		if (!price) {
+			price = '35.00';
+		}
+		price = price.split('.');
+
+		if (price[1].length === 1) {
+			price[1] = price[1] + '0';
+		}
+		price = price.join('.');
+		return price;
+	};
+
+	const formateColor = color => {
+		const colors = color.map(e => e.hex_value);
+		return colors;
+	};
+	const formattedProduct = {
+		id: product.id,
+		name: product.name,
+		image: product.api_featured_image,
+		price: priceFormatter(product.price),
+		description: product.description,
+		colors: formateColor(product.product_colors),
+	};
 	return formattedProduct;
 };

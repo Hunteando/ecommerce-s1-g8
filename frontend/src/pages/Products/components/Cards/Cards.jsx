@@ -1,12 +1,15 @@
 import { CardMakeup } from '../CardMakeup/CardMakeup';
 import { LoadingCard } from '@/components/LoadingCard/LoadingCard';
 import style from './Cards.module.css';
-import PropTypes from 'prop-types';
-import { useProducts } from '@/hook/useProducts';
+import { useContext, useEffect } from 'react';
+import { DataContex } from '../../Context/ProductsProvider';
 
-export function Cards({ product }) {
+export function Cards() {
+	const { products, loading, order } = useContext(DataContex);
 	const cardsLoading = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-	const { products, loading } = useProducts(product);
+	useEffect(() => {
+		console.log('se ordeno');
+	}, [order]);
 
 	if (loading)
 		return (
@@ -36,6 +39,3 @@ export function Cards({ product }) {
 		</section>
 	);
 }
-Cards.propTypes = {
-	product: PropTypes.string,
-};

@@ -3,17 +3,26 @@ import { Counter } from './Components/Counter/Counter';
 import { Color } from './Components/Colors/Color';
 import style from './Detail.module.css';
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
+import { useProduct } from '../../hook/useProduct';
+
 export function Detail({ image, brand, name, price, description, colors }) {
+	// https://makeup-api.herokuapp.com/api/v1/products/1035
+	const { id } = useParams();
+	const { product, loading } = useProduct(id);
+
+	if (loading) return <>Cargando.....</>;
+
 	return (
 		<>
 			<div className={style.container}>
 				<section className={style.container_detail}>
-					<img src={`${image}`} alt='producto' />
+					<img src={`${product.image}`} alt='producto' />
 					<article>
-						<h3> {`${brand}`}</h3>
-						<h4>{name}</h4>
-						<p>${`${price === '0.0' ? '55.00' : price}`}</p>
-						<Color colors={colors} />
+						<h3> {`${product.brand}`}</h3>
+						<h4>{product.name}</h4>
+						<p>${`${product.price}`}</p>
+						<Color colors={product.colors} />
 						<div>
 							<Counter />
 							<button>comprar</button>
@@ -22,7 +31,7 @@ export function Detail({ image, brand, name, price, description, colors }) {
 				</section>
 				<section>
 					<h4>Description: </h4>
-					<p>{description}</p>
+					<p>{product.description}</p>
 				</section>
 			</div>
 			<Footer />
