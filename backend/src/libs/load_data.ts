@@ -20,6 +20,13 @@ interface ApiI {
 	tag_list: string[];
 }
 
+interface CreatePro {
+	name: string;
+	price: number;
+	image_link: string;
+	description: string;
+}
+
 interface ProductSave {
 	name: string;
 	price: number;
@@ -168,13 +175,19 @@ async function productConstructor(complement: string) {
 	return arrProduct;
 }
 
-async function uploadDataToTable(name: string, data: ProductSave[] | ResObj[]) {
+async function uploadDataToTable(name: string, data: CreatePro[] | ResObj[]) {
 	let table = null;
 	if (name === 'brand') table = Brand;
 	else if (name === 'category') table = Category;
 	else if (name === 'color') table = Color;
 	else if (name === 'typepro') table = Typepro;
-	else if (name === 'products') table = Product;
+	else if (name === 'products') {
+		for (const d of data as CreatePro[]) {
+			const newRegister = Product.create({ ...d });
+			await Product.save(newRegister);
+		}
+		return;
+	}
 
 	return await AppDataSource.createQueryBuilder()
 		.insert()
@@ -218,8 +231,8 @@ async function uploadDataToTableAndGetProduct() {
 	// Esta función solo se debe utilizar siempre y cuando estén
 	// cargados en la base de datos los complementos como: brand, category, typepro
 
-	const res = await joindProductsByProductType();
-	return res;
+	await joindProductsByProductType();
+	return 'Uploaded products successfully!';
 }
 
 export { uploadDataToTableAndGetProduct };
