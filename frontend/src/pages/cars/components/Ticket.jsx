@@ -8,7 +8,7 @@ import style from '../cars.module.css';
 
 const Ticket = () => {
 	return (
-		<Table>
+		<Table className={style.ticket}>
 			<TableBody>
 				<TableRow>
 					<TableCell className={style.row}>VALOR DE LA COMPRA</TableCell>
@@ -43,7 +43,7 @@ const Ticket = () => {
 							<span>TENGO UN CUPÓN DE DESCUENTO</span>
 						</div>
 					</TableCell>
-					<TableCell align='right'>
+					<TableCell align='right' className={style.iconoArrow}>
 						<KeyboardArrowDownOutlinedIcon />
 					</TableCell>
 				</TableRow>

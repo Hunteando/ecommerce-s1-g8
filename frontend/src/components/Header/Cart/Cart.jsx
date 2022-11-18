@@ -16,7 +16,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export default function Cart() {
-	// uso del estado en redux del carrito para mostrar la cantidad
+	// uso del estado en redux del carrito para mostrar la cantidad(Isra)
 	const { carrito } = useSelector(state => state.car);
 	const num = String(carrito.length);
 

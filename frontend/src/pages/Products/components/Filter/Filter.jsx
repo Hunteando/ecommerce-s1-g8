@@ -24,8 +24,6 @@ export function Filter({ product }) {
 	};
 
 	useEffect(() => {
-		console.log(product);
-
 		// segun el tipo de producto vamos a buscar las tag lis y las categorias
 		const tags = makeupFitler[product].tag;
 		console.log(tags);
