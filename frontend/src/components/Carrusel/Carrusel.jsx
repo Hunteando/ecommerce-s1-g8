@@ -30,6 +30,7 @@ export function Carrusel(props) {
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const [selectedImage, setSelectedImage] = useState(props.images[0]);
 	const [loaded, setLoaded] = useState(false);
+
 	useEffect(() => {
 		if (props.autoplay || !props.showbuttons) {
 			const interval = setInterval(() => {
@@ -60,17 +61,9 @@ export function Carrusel(props) {
 	};
 
 	const previous = () => {
-		// const condicion = selectedIndex > 0;
-		// const nextIndex = condicion ? selectedIndex - 1 : images.length - 1;
-		// setSelectedImage(images[nextIndex]);
-		// setSelectedIndex(nextIndex);
 		selectnewImage(selectedImage, props.images, false);
 	};
 	const next = () => {
-		// const condicion = selectedIndex < images.length;
-		// const nextIndex = condicion ? selectedIndex + 1 : 0;
-		// setSelectedImage(images[nextIndex]);
-		// setSelectedIndex(nextIndex);
 		selectnewImage(selectedImage, props.images, true);
 	};
 
