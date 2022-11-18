@@ -19,12 +19,12 @@ export default function BasicTable() {
 			<Container className={style.car}>
 				{carrito.length > 0 ? (
 					<>
-						<h1>MI CARRITO DE COMPRAS</h1>
-						<Grid container>
-							<Grid item xs={12} md={7}>
+						<Grid container spacing={5}>
+							<Grid item xs={12} md={7} lg={7}>
+								<img src='https://staticar.natura.com/cdn/ff/mnNtK2hUA5o3F269blvJcuKfgpe78AWdfqtuAPV1dJ0/1668185554/public/2022-11/Optimize_MiCarrito_Anew.jpg' alt='detalles'/>
 								<ItemDetail />
 							</Grid>
-							<Grid item xs={12} md={5}>
+							<Grid item xs={12} md={5} lg={5}>
 								<Container>
 									<Box className={style.table}>
 										<Ticket />

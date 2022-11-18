@@ -1,6 +1,7 @@
 /*estilos de car-inicio*/
 .car {
 	margin: 70px 0;
+	position: relative;
 }
 .carVacio {
 	display: flex;
@@ -56,18 +57,60 @@
 	cursor: pointer;
 }
 /*estilos de car-final*/
-/*estilos de Detail-inicio*/
+/*estilos de ItemDetail-inicio*/
 .detailCel {
 	display: flex;
 	align-items: center;
 	gap: 20px;
 }
 .img {
-	width: 25px;
-	height: 25px;
+	width: 30px;
+	height: 30px;
 	border-radius: 50%;
 }
-/*estilos de Detail-final*/
+h2 {
+	padding-left: 20px;
+}
+@media screen and (max-width: 768px) {
+	h2 {
+		font-size: 20px;
+		text-align: center;
+	}
+}
+@media screen and (max-width: 768px) {
+	/*la clase desktop hará que los elementos no se muestren*/
+	.desktop {
+		display: none !important;
+	}
+	.detailCel {
+		display: flex;
+		flex-direction: column;
+		font-size: 16px;
+	}
+	.detailCel .img {
+		width: 40px;
+		height: 40px;
+	}
+	.detailCel span {
+		text-align: center;
+	}
+}
+/*estilos Item-Inicio*/
+.delete {
+	filter: drop-shadow(1px 2px 3px #01010185);
+    margin-right: 5px;
+}
+.delete:hover {
+	cursor: pointer;
+	transition: all 0.5s;
+	transform: scale(1.2);
+}
+.aler {
+	position: absolute;
+	top: -10px;
+}
+/*estilos Item-Final*/
+/*estilos de ItemDetail-final*/
 /*estilos de Ticket-inicio*/
 .row {
 	border-bottom: none !important;
@@ -78,9 +121,14 @@
 	justify-content: space-around;
 	font-size: 12px;
 	gap: 30px;
+
+	width: 100%;
 }
 .total {
 	font-size: 25px;
 	font-weight: lighter;
+}
+.iconoArrow {
+	padding: none !important;
 }
 /*estilos de Ticket-final*/
