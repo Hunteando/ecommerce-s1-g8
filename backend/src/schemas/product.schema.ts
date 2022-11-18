@@ -11,12 +11,16 @@ export const ProductSchema = z.object({
 		brand: z.number().min(1).nonnegative(),
 		category: z.number().min(1).nonnegative(),
 		typepro: z.number().min(1).nonnegative(),
-		tags: z.object({
-			name: defaultString,
-		}),
-		colors: z.object({
-			hex_value: defaultString,
-			colour_name: defaultString,
-		}),
+		tags: z.array(
+			z.object({
+				name: defaultString,
+			})
+		),
+		colors: z.array(
+			z.object({
+				hex_value: defaultString,
+				colour_name: defaultString,
+			})
+		),
 	}),
 });
