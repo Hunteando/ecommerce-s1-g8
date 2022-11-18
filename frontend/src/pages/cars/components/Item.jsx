@@ -4,21 +4,41 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { TableBody, TableCell, TableRow } from '@mui/material';
 import style from '../cars.module.css';
 
+// alert de material ui(modo prueba)
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+
 // uso del estado de redux (Isra)
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteCar } from '../../../redux/store/states/carritoSlice';
+import { useState } from 'react';
 
-export const Detail = () => {
+export const Item = () => {
+	const [alerts, setAlerts] = useState(false);
 	// carrito tiene todos los items
 	const { carrito } = useSelector(state => state.car);
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 
-	const eliminar = (id) => {
-		alert('click');
-		dispatch(deleteCar(id))
+	const alertItem = () => {
+		setAlerts(!alerts);
+		setTimeout(() => {
+			setAlerts(false);
+		}, 1000);
 	};
+	const eliminar = id => {
+		dispatch(deleteCar(id));
+		alertItem();
+	};
+
 	return (
 		<TableBody>
+			{alerts ? (
+				<Stack sx={{ width: '100%' }} className={style.aler}>
+					<Alert severity='error'>Producto eliminado...</Alert>
+				</Stack>
+			) : (
+				<></>
+			)}
 			{carrito.map((item, index) => (
 				<TableRow
 					key={index}
@@ -42,9 +62,11 @@ export const Detail = () => {
 						</span>
 					</TableCell>
 					<TableCell align='right'>precio</TableCell>
-					<TableCell align='right'>cantidad</TableCell>
+					<TableCell align='right' className={style.desktop}>
+						cantidad
+					</TableCell>
 					<TableCell align='right' onClick={() => eliminar(item.id)}>
-						<DeleteForeverIcon />
+						<DeleteForeverIcon color='error' className={style.delete} />
 					</TableCell>
 				</TableRow>
 			))}

@@ -10,8 +10,8 @@ export const carSlice = createSlice({
 			state.carrito.push(action.payload);
 		},
 		deleteCar: (state, action) => {
-			// const itemFind = state.carrito.find(item =>  item.id === action.payload)
-			// console.log(itemFind)
+			const itemFind = state.carrito.find(item =>  item.id === action.payload)
+			state.carrito.splice(state.carrito.indexOf(itemFind),1)
 		},
 	},
 });
