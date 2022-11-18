@@ -24,3 +24,11 @@ export const ProductSchema = z.object({
 		),
 	}),
 });
+
+export const ProductQueryParams = z.object({
+	query: z.object({
+		page_size: z.number().nonnegative().optional(),
+		page: z.number().nonnegative().optional(),
+		product_type: z.string().optional(),
+	}),
+});

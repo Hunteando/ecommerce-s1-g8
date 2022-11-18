@@ -2,7 +2,7 @@ import { NextFunction, Request, Response, Router } from 'express';
 import { ProductsCrud } from '../controllers/products.controller';
 import { CreateProductDto } from '../dto/product/create-product.dto';
 import { schemaValidation } from '../middlewares/schemaValidation.middleware';
-import { ProductSchema } from '../schemas/product.schema';
+import { ProductQueryParams, ProductSchema } from '../schemas/product.schema';
 
 const router: Router = Router();
 const productCrud = new ProductsCrud();
@@ -46,25 +46,31 @@ router.post(
  *     tags:
  *       - products
  *     summary: Listar productos
- *     description: Obtiene todos los productos con un paginado de 9 productos por sección.
+ *     description: Obtiene todos los productos con un paginado de 9 productos por sección y puede ser utilizado con los filtros.
  *     responses:
  *       '200':
  *         description: Retorna la lista de productos
  *       '500':
  *         description: Posiblemente no haya registros en la base de datos
  */
-router.get('/', async (req: Request, res: Response, next: NextFunction) => {
-	try {
-		const { page_size, page } = req.query;
-		const ps = page_size || 9;
-		const p = page || 0;
+router.get(
+	'/',
+	schemaValidation(ProductQueryParams),
+	async (req: Request, res: Response, next: NextFunction) => {
+		try {
+			const { page_size, page, product_type } = req.query;
 
-		const products = await productCrud.getProducts(Number(ps), Number(p));
-		res.json({ data: products });
-	} catch (err) {
-		next(err);
+			const products = await productCrud.getProducts(
+				Number(page_size || 9),
+				Number(page || 0),
+				String(product_type)
+			);
+			res.json({ data: products });
+		} catch (err) {
+			next(err);
+		}
 	}
-});
+);
 
 router.get('/:id', async (req: Request, res: Response, next: NextFunction) => {
 	try {
