@@ -6,12 +6,18 @@ import { Product } from '../entities/product.entity';
 export class ProductsCrud {
 	async getProducts(
 		page_size: number,
-		page: number
+		page: number,
+		product_type?: string
 	): Promise<UpdateProductDto[]> {
-		if (isNaN(page_size) || isNaN(page))
-			throw new Error('Paging queries must be numeric');
+		// if (isNaN(page_size) || isNaN(page))
+		// 	throw new Error('Paging queries must be numeric');
 		const skip = page * page_size;
 		const products = await Product.find({
+			where: {
+				...(product_type?.length === 0 && {
+					typepro: { name: product_type || undefined },
+				}),
+			},
 			take: page_size,
 			order: {
 				created_at: 'DESC',
