@@ -131,6 +131,10 @@ async function getComplementsProducts(
 	return id;
 }
 
+function cleanString(str: string) {
+	const EXPREG = /(\r\n|\n|\r)/gm;
+	return str.replace(EXPREG, '').trim();
+}
 async function productConstructor(complement: string) {
 	const products = (await getDataApi(complement)) as ApiI[];
 	const arrProduct: ProductSave[] = [];
@@ -138,7 +142,7 @@ async function productConstructor(complement: string) {
 	for (let i = 0; i < products.length; i++) {
 		if (i <= +quantity - 1) {
 			const productoObj: ProductSave = {
-				name: products[i].name,
+				name: cleanString(products[i].name),
 				price: products[i].price > 0 ? products[i].price : 8.5,
 				image_link: products[i].image_link,
 				description:
