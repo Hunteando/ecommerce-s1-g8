@@ -26,6 +26,7 @@ export const createProductAdapter = product => {
 		price: priceFormatter(product.price),
 		description: product.description,
 		colors: formateColor(product.product_colors),
+		brand:product.brand
 	};
 	return formattedProduct;
 };
