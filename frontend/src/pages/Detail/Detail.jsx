@@ -5,6 +5,8 @@ import style from './Detail.module.css';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { useProduct } from '../../hook/useProduct';
+import { Container, Grid } from '@mui/material';
+import StarIcon from '@mui/icons-material/Star';
 
 export function Detail({ image, brand, name, price, description, colors }) {
 	// https://makeup-api.herokuapp.com/api/v1/products/1035
@@ -15,25 +17,38 @@ export function Detail({ image, brand, name, price, description, colors }) {
 
 	return (
 		<>
-			<div className={style.container}>
-				<section className={style.container_detail}>
-					<img src={`${product.image}`} alt='producto' />
-					<article>
-						<h3> {`${product.brand}`}</h3>
-						<h4>{product.name}</h4>
-						<p>${`${product.price}`}</p>
-						<Color colors={product.colors} />
-						<div>
-							<Counter />
-							<button>comprar</button>
-						</div>
-					</article>
-				</section>
-				<section>
-					<h4>Description: </h4>
-					<p>{product.description}</p>
-				</section>
-			</div>
+			<Container className={style.container}>
+				<Grid container>
+					<Grid item xs={6} className={style.container_detail}>
+						<img src={`${product.image}`} alt='producto' />
+						<h4>Description: </h4>
+						<p>{product.description}</p>
+					</Grid>
+					<Grid item xs={6}>
+						<article className={style.ticket}>
+							<h2>{product.name}</h2>
+							<h4> {`${product.brand}`}</h4>
+
+							<span className={style.free}>free bag</span>
+							<div className={style.star}>
+								<StarIcon />
+								<StarIcon />
+								<StarIcon />
+								<StarIcon />
+								<StarIcon />
+								<span>¡Evalúa ahora!</span>
+
+							</div>
+							<p>${`${product.price}`}</p>
+							<Color colors={product.colors} />
+							<div>
+								<Counter />
+								<button>comprar</button>
+							</div>
+						</article>
+					</Grid>
+				</Grid>
+			</Container>
 			<Footer />
 		</>
 	);
