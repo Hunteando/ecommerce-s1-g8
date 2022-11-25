@@ -7,27 +7,35 @@ import { useParams } from 'react-router-dom';
 import { useProduct } from '../../hook/useProduct';
 import { Container, Grid } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
+import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 
 export function Detail({ image, brand, name, price, description, colors }) {
 	// https://makeup-api.herokuapp.com/api/v1/products/1035
 	const { id } = useParams();
 	const { product, loading } = useProduct(id);
-
+console.log(product);
 	if (loading) return <>Cargando.....</>;
 
 	return (
 		<>
 			<Container className={style.container}>
 				<Grid container>
-					<Grid item xs={6} className={style.container_detail}>
-						<img src={`${product.image}`} alt='producto' />
-						<h4>Description: </h4>
-						<p>{product.description}</p>
+					<Grid item xs={12} sm={6} md={6} className={style.container_detail}>
+						<div className={style.img}>
+							<img src={`${product.image}`} alt='producto' />
+						</div>
+						<div className={style.desktop}>
+							<h4>Description: </h4>
+							<p>{product.description}</p>
+						</div>
+						<div className={style.logoImage}>
+							<img src={`${product.image}`} alt='producto' />
+						</div>
 					</Grid>
-					<Grid item xs={6}>
-						<article className={style.ticket}>
+					<Grid item xs={12} sm={6} md={6} className={style.gridDos}>
+						<div className={style.ticket}>
 							<h2>{product.name}</h2>
-							<h4> {`${product.brand}`}</h4>
+							<h4> {product.brand}</h4>
 
 							<span className={style.free}>free bag</span>
 							<div className={style.star}>
@@ -36,17 +44,28 @@ export function Detail({ image, brand, name, price, description, colors }) {
 								<StarIcon />
 								<StarIcon />
 								<StarIcon />
-								<span>¡Evalúa ahora!</span>
-
+								<span className={style.starText}>¡Evalúa ahora!</span>
 							</div>
-							<p>${`${product.price}`}</p>
+							<p className={style.price}>${` ${product.price}`}</p>
 							<Color colors={product.colors} />
-							<div>
-								<Counter />
-								<button>comprar</button>
+							<div className={style.amount}>
+								<h5>Amount</h5>
+								<div className={style.buy}>
+									<Counter />
+									<button>
+										TO BAY{' '}
+										<span>
+											<LocalMallOutlinedIcon />
+										</span>
+									</button>
+								</div>
 							</div>
-						</article>
+						</div>
 					</Grid>
+					<div className={style.mobile}>
+						<h4>Description: </h4>
+						<p>{product.description}</p>
+					</div>
 				</Grid>
 			</Container>
 			<Footer />
