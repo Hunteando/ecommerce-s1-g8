@@ -11,9 +11,9 @@ export function Counter() {
 	};
 	return (
 		<div className={style.container_button}>
-			<button onClick={prev}>-</button>
-			<p>{state}</p>
-			<button onClick={next}>+</button>
+			<span onClick={prev}>-</span>
+			<span>{state}</span>
+			<span onClick={next}>+</span>
 		</div>
 	);
 }

@@ -1,32 +1,114 @@
-.container .ticket{
-	border: 1px solid #01010130;
-	padding: 10%;
-	width: 80%;
-	margin: auto;
+.container {
+	margin: 70px 0;
+
 }
-.container .ticket h2{
+.container .gridDos {
+	display: flex;
+
+	align-items: center;
+}
+.container .ticket {
+	border: 1px solid #01010130;
+	width: 100%;
+	margin: auto;
+	padding: 20px 50px;
+}
+.container .ticket h2 {
 	padding: 0;
 	font-size: 30px;
 	font-weight: lighter;
-
 }
-.container .ticket h4{
+.container .ticket h4 {
 	text-transform: uppercase;
 	margin-top: -20px;
 }
-.container .ticket .free{
+.container .ticket .free {
 	background-color: #ffb6c1;
 	padding: 5px 20px;
 	color: #fff;
 	border-radius: 40px;
+	margin-top: 30px;
 }
-.container .ticket .star{
+.container .ticket .star {
 	color: #cccccc;
+	display: flex;
+	padding: 10px 0;
+	align-items: center;
+}
+.container .ticket .starText {
+	color: #636363;
+	padding-left: 10px;
+}
+.container .ticket .starText:hover {
+	color: #ff336d;
+}
+.container .ticket .price {
+	font-size: 28px;
+	color: #333333;
+}
+.container .ticket .amount h5 {
+	color: #777777;
+}
+.container .ticket .buy {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	margin-top: -15px;
+	color: #777777;
+}
+.container .ticket .buy button {
+	padding: 6px 30px;
+	background-color: #7f28c4;
+	color: #fff;
+	border: none;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 15px;
+	font-weight: lighter;
+	cursor: pointer;
+	border-radius: 3px;
+	transition: all 0.5s;
+}
+.container .ticket .buy button:hover {
+	transform: scale(1.1);
+}
+/*grid one*/
+.container_detail {
+	position: relative;
+	
+	padding-right: 20px;
 }
 
-/* .container_detail {
-	margin: 0 0;
+.container_detail .img {
+	display: flex;
+
+	overflow: hidden;
+	justify-content: center;
+}
+.container_detail .img img {
+	height: 300px;
+}
+/* .container_detail .img img:hover {
+	transform: scale(1.5);
+	transition: all 0.5s;
 } */
+
+.container_detail .logoImage {
+	width: 70px;
+	height: 70px;
+	position: absolute;
+	top: 0;
+	border: 2px solid #7f28c4;
+	padding: 10px;
+}
+.container_detail .logoImage img {
+	width: 100%;
+	height: 100%;
+}
+.container .mobile{
+	display: none
+}
 /* .container_detail article {
 	margin: 0;
 	padding: 0 1rem;
@@ -70,8 +152,63 @@
 	border: black solid 1px;
 	border-radius: 5px;
 } */
-
-@media screen and (min-width: 1200px) {
+@media screen and (max-width: 600px) {
+	
+	.container .desktop{
+		display: none;
+	}
+	.container .mobile{
+		display: block;
+		padding: 0 10px;
+	} 
+	.container .mobile p{
+		font-size: 16px;
+	} 
+	.container .ticket{
+		padding: 20px 10px;
+	}
+	.container .ticket h2, h4 {
+		text-align: center;
+		
+	}
+}
+@media screen and ((min-width: 530px) and (max-width: 900px)) {
+	.container{
+		padding: 0!important;
+	}
+	.container .desktop{
+		display: none;
+	}
+	.container .mobile{
+		display: block;
+		padding: 0 10px;
+	} 
+	.container .ticket .buy button {
+		padding: 6px 30px;
+		background-color: #7f28c4;
+		color: #fff;
+		border: none;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		font-size: 10px;
+		font-weight: lighter;
+		cursor: pointer;
+		border-radius: 3px;
+		transition: all 0.5s;
+	}
+	.container_detail .logoImage {
+		width: 50px;
+		height: 50px;
+		position: absolute;
+		top: 0;
+		border: 2px solid #7f28c4;
+		padding: 10px;
+	}
+	.container .mobile p{
+		font-size: 16px;
+		padding: 0 15px;
+	} 
 	/* .container {
 		max-width: 1200px;
 		margin: 0 auto;
