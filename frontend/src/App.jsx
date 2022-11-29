@@ -15,6 +15,8 @@ import Car from './pages/cars/Car';
 import { Header } from './components/Header/Header';
 import { SearchMobile } from './components/SearchMobile/SearchMobile';
 import { Menu } from './components/Menu/Menu';
+import RecoveryP from './pages/RecoveryPassword/RecoveryPassword';
+import MailRecovery from './pages/MailRecovery/MailRecovery';
 const Login = lazy(() => import('./pages/Login/Login'));
 // const Detail = lazy(() => import('./pages/Detail/Detail'));
 
@@ -35,6 +37,8 @@ function App() {
 				<Route exact path='/car' element={<Car />} />
 				<Route path={PublicRoutes.LOGIN} element={<Login />} />
 				<Route path='/signup' element={<Formreg />} />
+				<Route path='/recovery' element={<RecoveryP />} />
+				<Route path='/mailRecovery' element={<MailRecovery />} />
 				<Route element={<GuardAuth />}>
 					<Route path={`${PrivateRoutes.PRIVATE}/*`} element={<Private />} />
 				</Route>
