@@ -17,6 +17,7 @@ import { SearchMobile } from './components/SearchMobile/SearchMobile';
 import { Menu } from './components/Menu/Menu';
 import RecoveryP from './pages/RecoveryPassword/RecoveryPassword';
 import MailRecovery from './pages/MailRecovery/MailRecovery';
+import UserInfo from './pages/userInfo/UserInfo'
 const Login = lazy(() => import('./pages/Login/Login'));
 // const Detail = lazy(() => import('./pages/Detail/Detail'));
 
@@ -39,6 +40,7 @@ function App() {
 				<Route path='/signup' element={<Formreg />} />
 				<Route path='/recovery' element={<RecoveryP />} />
 				<Route path='/mailRecovery' element={<MailRecovery />} />
+				<Route path='/userInfo' element={<UserInfo />} />
 				<Route element={<GuardAuth />}>
 					<Route path={`${PrivateRoutes.PRIVATE}/*`} element={<Private />} />
 				</Route>
